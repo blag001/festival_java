@@ -27,7 +27,7 @@ TCh_Libelle varchar2(15) not null,
 constraint pk_TypeChambre primary key(TCh_Id)) ;
 
 create table Offre
-(Off_Etalissement  char(8) not null, 
+(Off_Etablissement  char(8) not null, 
 Off_TypeChambre    char(2) not null, 
 Off_NbChambres     number(2) not null, 
 constraint pk_Offre primary key(Off_Etablissement, Off_TypeChambre));
@@ -58,7 +58,7 @@ ALTER TABLE offre
 add constraint  fk1_Offre foreign key(Off_Etablissement) references Etablissement(Eta_Id) ;
  
 ALTER TABLE offre
-constraint fk2_Offre foreign key(Off_TypeChambre) references TypeChambre(TCh_Id);
+add constraint fk2_Offre foreign key(Off_TypeChambre) references TypeChambre(TCh_Id);
 
 ALTER TABLE attribution
 add constraint fk1_Attribution foreign key(Att_Groupe) references Groupe(Gp_Id) ;
