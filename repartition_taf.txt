@@ -1,5 +1,5 @@
 @alex :
-	gestion des types de chambres
+	gestion des types de chambres !
 @ben : 
 	gestion de l'offre d'hebergement
 @meli :
