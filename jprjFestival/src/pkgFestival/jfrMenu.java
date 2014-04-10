@@ -4,11 +4,15 @@
  */
 package pkgFestival;
 
+import pkgVues.jpAjoutEtab;
+
+
 /**
  *
  * @author etudsio
  */
 public class jfrMenu extends javax.swing.JFrame {
+    protected jpAjoutEtab Accueil = new jpAjoutEtab();
 
     /**
      * Creates new form jfrMenu
@@ -39,6 +43,11 @@ public class jfrMenu extends javax.swing.JFrame {
         jMenu.add(jmAccueil);
 
         jmEtablissement.setText("Gestion établissements");
+        jmEtablissement.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmEtablissementMouseClicked(evt);
+            }
+        });
         jMenu.add(jmEtablissement);
 
         jmTChambre.setText("Gestion types chambres");
@@ -65,6 +74,12 @@ public class jfrMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmEtablissementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmEtablissementMouseClicked
+        // TODO add your handling code here:
+        this.setContentPane(Accueil);
+        pack();
+    }//GEN-LAST:event_jmEtablissementMouseClicked
 
     /**
      * @param args the command line arguments

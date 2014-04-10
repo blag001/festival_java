@@ -13,6 +13,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Gestion &#xe9;tablissements"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmEtablissementMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmTChambre">
           <Properties>
