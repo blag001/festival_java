@@ -4,6 +4,8 @@
  */
 package pkgFestival;
 
+import org.hibernate.Session;
+import pkgEntite.HibernateUtil;
 import pkgVues.jpAjoutEtab;
 
 
@@ -12,13 +14,22 @@ import pkgVues.jpAjoutEtab;
  * @author etudsio
  */
 public class jfrMenu extends javax.swing.JFrame {
-    protected jpAjoutEtab Accueil = new jpAjoutEtab();
+    private static Session session = HibernateUtil.getSessionFactory().openSession();
+    protected jpAjoutEtab jpAjoutEtab = new jpAjoutEtab();
 
     /**
      * Creates new form jfrMenu
      */
     public jfrMenu() {
         initComponents();
+    }    
+
+    public static Session getSession() {
+        return session;
+    }
+
+    public static void setSession(Session session) {
+        jfrMenu.session = session;
     }
 
     /**
@@ -92,7 +103,7 @@ public class jfrMenu extends javax.swing.JFrame {
 
     private void jmEtablissementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmEtablissementMouseClicked
         // TODO add your handling code here:
-        this.setContentPane(Accueil);
+        this.setContentPane(jpAjoutEtab);
         pack();
     }//GEN-LAST:event_jmEtablissementMouseClicked
 

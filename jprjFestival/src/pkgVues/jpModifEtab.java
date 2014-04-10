@@ -58,7 +58,7 @@ public class jpModifEtab extends javax.swing.JPanel {
         jLabel6.setText("jLabel6");
 
         jlTitre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jlTitre.setText("Nouvel Etablissement");
+        jlTitre.setText("Modifier l'établissement");
 
         jlID.setText("ID * :");
 
@@ -196,9 +196,7 @@ public class jpModifEtab extends javax.swing.JPanel {
                         .addComponent(jlID)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jlNom))
+                    .addComponent(jlNom)
                     .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)

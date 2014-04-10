@@ -4,17 +4,24 @@
  */
 package pkgVues;
 
+import java.util.Iterator;
+import org.hibernate.Query;
+import pkgEntite.Etablissement;
+import pkgFestival.jfrMenu;
+
 /**
  *
  * @author etudsio
  */
-public class jpAjoutEtab extends javax.swing.JPanel {
+public class jpAjoutEtab extends javax.swing.JPanel 
+{
 
     /**
      * Creates new form jpAjoutEtab
      */
     public jpAjoutEtab() {
         initComponents();
+        chargerCivilite();
     }
 
     /**
@@ -52,8 +59,8 @@ public class jpAjoutEtab extends javax.swing.JPanel {
         jlPrenomResp = new javax.swing.JLabel();
         txtNomResp = new java.awt.TextField();
         txtPrenomResp = new java.awt.TextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnValider = new javax.swing.JButton();
+        btnAnnuler = new javax.swing.JButton();
 
         jLabel6.setText("jLabel6");
 
@@ -100,6 +107,11 @@ public class jpAjoutEtab extends javax.swing.JPanel {
         jlCiviliteResp.setText("Civilité* :");
 
         lstCiviliteResp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        lstCiviliteResp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lstCiviliteRespActionPerformed(evt);
+            }
+        });
 
         jlNomResp.setText("Nom* :");
 
@@ -109,9 +121,14 @@ public class jpAjoutEtab extends javax.swing.JPanel {
 
         txtPrenomResp.setText("textField9");
 
-        jButton1.setText("Valider");
+        btnValider.setText("Valider");
+        btnValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValiderActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Annuler");
+        btnAnnuler.setText("Annuler");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -147,15 +164,15 @@ public class jpAjoutEtab extends javax.swing.JPanel {
                                             .addComponent(txtAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtVille, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnType1)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnType2))))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jlType)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnType1)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnType2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(246, 246, 246)))
+                        .addGap(0, 372, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlResponsable)
@@ -170,9 +187,9 @@ public class jpAjoutEtab extends javax.swing.JPanel {
                                 .addGap(62, 62, 62)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
+                                        .addComponent(btnValider)
                                         .addGap(36, 36, 36)
-                                        .addComponent(jButton2)
+                                        .addComponent(btnAnnuler)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jlNomResp)
@@ -196,9 +213,7 @@ public class jpAjoutEtab extends javax.swing.JPanel {
                         .addComponent(jlID)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jlNom))
+                    .addComponent(jlNom)
                     .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -239,16 +254,39 @@ public class jpAjoutEtab extends javax.swing.JPanel {
                     .addComponent(txtPrenomResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnValider)
+                    .addComponent(btnAnnuler))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnValiderActionPerformed
+
+    private void lstCiviliteRespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lstCiviliteRespActionPerformed
+        // TODO add your handling code here:
+              
+    }//GEN-LAST:event_lstCiviliteRespActionPerformed
+    private void chargerCivilite()
+    {
+            String sReq = "from Etablissement";
+            jfrMenu.getSession().beginTransaction();
+            Query q = jfrMenu.getSession().createQuery(sReq);
+
+            Iterator civilite = q.iterate();
+            while (civilite.hasNext()){
+                Etablissement uneCivilite = (Etablissement)civilite.next();
+                lstCiviliteResp.addItem(uneCivilite.getEtaCivilresp());
+            }
+            //bCharge = true;
+     } 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnnuler;
     private javax.swing.JRadioButton btnType1;
     private javax.swing.JRadioButton btnType2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnValider;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jlAdresse;
     private javax.swing.JLabel jlCP;
