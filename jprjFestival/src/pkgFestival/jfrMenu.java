@@ -33,9 +33,12 @@ public class jfrMenu extends javax.swing.JFrame {
         jMenu = new javax.swing.JMenuBar();
         jmAccueil = new javax.swing.JMenu();
         jmEtablissement = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jmTChambre = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jmOffres = new javax.swing.JMenu();
         jmAttribution = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,15 +51,27 @@ public class jfrMenu extends javax.swing.JFrame {
                 jmEtablissementMouseClicked(evt);
             }
         });
+
+        jMenuItem1.setText("Créer un établissement");
+        jmEtablissement.add(jMenuItem1);
+
         jMenu.add(jmEtablissement);
 
         jmTChambre.setText("Gestion types chambres");
+
+        jMenuItem2.setText("Créer un type de chambre");
+        jmTChambre.add(jMenuItem2);
+
         jMenu.add(jmTChambre);
 
         jmOffres.setText("Offre hébergement");
         jMenu.add(jmOffres);
 
         jmAttribution.setText("Attribution chambres");
+
+        jMenuItem3.setText("Effectuer une attribution");
+        jmAttribution.add(jMenuItem3);
+
         jMenu.add(jmAttribution);
 
         setJMenuBar(jMenu);
@@ -117,6 +132,9 @@ public class jfrMenu extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenu;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmAccueil;
     private javax.swing.JMenu jmAttribution;
     private javax.swing.JMenu jmEtablissement;
