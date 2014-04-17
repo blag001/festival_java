@@ -44,9 +44,9 @@ public class jfrMenu extends javax.swing.JFrame {
         jMenu = new javax.swing.JMenuBar();
         jmAccueil = new javax.swing.JMenu();
         jmEtablissement = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmAjoutEtab = new javax.swing.JMenuItem();
         jmTChambre = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmAjoutChambre = new javax.swing.JMenuItem();
         jmOffres = new javax.swing.JMenu();
         jmAttribution = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -63,15 +63,20 @@ public class jfrMenu extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Créer un établissement");
-        jmEtablissement.add(jMenuItem1);
+        jmAjoutEtab.setText("Créer un établissement");
+        jmAjoutEtab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAjoutEtabActionPerformed(evt);
+            }
+        });
+        jmEtablissement.add(jmAjoutEtab);
 
         jMenu.add(jmEtablissement);
 
         jmTChambre.setText("Gestion types chambres");
 
-        jMenuItem2.setText("Créer un type de chambre");
-        jmTChambre.add(jMenuItem2);
+        jmAjoutChambre.setText("Créer un type de chambre");
+        jmTChambre.add(jmAjoutChambre);
 
         jMenu.add(jmTChambre);
 
@@ -103,9 +108,14 @@ public class jfrMenu extends javax.swing.JFrame {
 
     private void jmEtablissementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmEtablissementMouseClicked
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jmEtablissementMouseClicked
+
+    private void jmAjoutEtabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAjoutEtabActionPerformed
+        // TODO add your handling code here:
         this.setContentPane(jpAjoutEtab);
         pack();
-    }//GEN-LAST:event_jmEtablissementMouseClicked
+    }//GEN-LAST:event_jmAjoutEtabActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,10 +153,10 @@ public class jfrMenu extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenu;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmAccueil;
+    private javax.swing.JMenuItem jmAjoutChambre;
+    private javax.swing.JMenuItem jmAjoutEtab;
     private javax.swing.JMenu jmAttribution;
     private javax.swing.JMenu jmEtablissement;
     private javax.swing.JMenu jmOffres;

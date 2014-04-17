@@ -69,8 +69,6 @@ public class jpAjoutEtab extends javax.swing.JPanel
 
         jlID.setText("ID * :");
 
-        txtID.setText("textField1");
-
         jlNom.setText("Nom* :");
 
         jlAdresse.setText("Adresse* :");
@@ -85,18 +83,6 @@ public class jpAjoutEtab extends javax.swing.JPanel
 
         jlType.setText("Type* :");
 
-        txtNom.setText("textField2");
-
-        txtAdresse.setText("textField3");
-
-        txtCP.setText("textField4");
-
-        txtVille.setText("textField5");
-
-        txtTel.setText("textField6");
-
-        txtMail.setText("textField7");
-
         btnType1.setText("Etablissement Scolaire");
 
         btnType2.setText("Autre");
@@ -106,7 +92,6 @@ public class jpAjoutEtab extends javax.swing.JPanel
 
         jlCiviliteResp.setText("Civilité* :");
 
-        lstCiviliteResp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         lstCiviliteResp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lstCiviliteRespActionPerformed(evt);
@@ -116,10 +101,6 @@ public class jpAjoutEtab extends javax.swing.JPanel
         jlNomResp.setText("Nom* :");
 
         jlPrenomResp.setText("Prénom* :");
-
-        txtNomResp.setText("textField8");
-
-        txtPrenomResp.setText("textField9");
 
         btnValider.setText("Valider");
         btnValider.addActionListener(new java.awt.event.ActionListener() {
@@ -141,50 +122,46 @@ public class jpAjoutEtab extends javax.swing.JPanel
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jlType)
+                        .addGap(246, 618, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
+                                .addComponent(jlNom)
+                                .addGap(46, 46, 46)
+                                .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlAdresse)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jlCP, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jlVille))
+                                    .addComponent(jlTel)
+                                    .addComponent(jlMail))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jlNom)
-                                        .addGap(46, 46, 46)
-                                        .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jlAdresse)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jlCP, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jlVille))
-                                            .addComponent(jlTel)
-                                            .addComponent(jlMail))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtVille, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnType1)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnType2))))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jlType)
-                                .addGap(246, 246, 246)))
+                                        .addComponent(btnType1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnType2))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtMail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtVille, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtAdresse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(2, 2, 2))
+                                    .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 372, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlResponsable)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlID)
-                                .addGap(53, 53, 53)
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jlCiviliteResp)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lstCiviliteResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
+                                .addComponent(lstCiviliteResp, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnValider)
@@ -195,10 +172,18 @@ public class jpAjoutEtab extends javax.swing.JPanel
                                         .addComponent(jlNomResp)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtNomResp, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                                         .addComponent(jlPrenomResp)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtPrenomResp, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(txtPrenomResp, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlResponsable)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jlID)
+                                        .addGap(53, 53, 53)
+                                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -276,10 +261,12 @@ public class jpAjoutEtab extends javax.swing.JPanel
             Query q = jfrMenu.getSession().createQuery(sReq);
 
             Iterator civilite = q.iterate();
-            while (civilite.hasNext()){
-                Etablissement uneCivilite = (Etablissement)civilite.next();
-                lstCiviliteResp.addItem(uneCivilite.getEtaCivilresp());
-            }
+//            while (civilite.hasNext()){
+//                Etablissement uneCivilite = (Etablissement)civilite.next();
+//                lstCiviliteResp.addItem(uneCivilite.getEtaCivilresp());
+//            }
+                lstCiviliteResp.addItem("Monsieur");
+                lstCiviliteResp.addItem("Madame");
             //bCharge = true;
      } 
     // Variables declaration - do not modify//GEN-BEGIN:variables
