@@ -5,7 +5,9 @@
  */
 
 package pkgVues;
-
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.Query;
+import pkgFestival.jfrMenu;
 /**
  *
  * @author etudSIO
@@ -17,8 +19,14 @@ public class jpListeChambre extends javax.swing.JPanel {
      */
     public jpListeChambre() {
         initComponents();
+        chargerListe();
     }
-
+    
+    private void chargerListe(){
+        String sReq= "from TypeChambre";
+        jfrMenu.getSession().beginTransaction();
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,20 +45,20 @@ public class jpListeChambre extends javax.swing.JPanel {
 
         jtblTypeChambre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "ID", "Libelle", "Action"
+                "ID", "Libelle"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -64,7 +72,6 @@ public class jpListeChambre extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jtblTypeChambre);
         if (jtblTypeChambre.getColumnModel().getColumnCount() > 0) {
             jtblTypeChambre.getColumnModel().getColumn(1).setResizable(false);
-            jtblTypeChambre.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jlblTableau.setText("Types de chambres");
@@ -74,18 +81,18 @@ public class jpListeChambre extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(jlblTableau)
+                .addContainerGap(168, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbtnAjoutTChambre)
-                .addGap(115, 115, 115))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jlblTableau)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jbtnAjoutTChambre)
+                        .addGap(115, 115, 115))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

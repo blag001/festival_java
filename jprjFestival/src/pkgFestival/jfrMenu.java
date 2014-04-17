@@ -4,8 +4,11 @@
  */
 package pkgFestival;
 
+import org.hibernate.Session;
 import pkgVues.jpAjoutEtab;
 import pkgVues.jfAjoutTChambre;
+import pkgVues.jpListeChambre;
+import pkgEntite.HibernateUtil;
 
 
 /**
@@ -13,19 +16,26 @@ import pkgVues.jfAjoutTChambre;
  * @author etudsio
  */
 public class jfrMenu extends javax.swing.JFrame {
-
+    public Session session = HibernateUtil.getSessionFactory().openSession();
     /**
      *
      */
     protected jfAjoutTChambre TChambre = new jfAjoutTChambre();
     protected jpAjoutEtab TEtab = new jpAjoutEtab();
+    protected jpListeChambre LTChambre = new jpListeChambre();
     /**
      * Creates new form jfrMenu
      */
     public jfrMenu() {
         initComponents();
     }
-
+    public Session getSession(){
+        return session;
+    }
+    
+    public void setSession(Session psession){
+        this.session = psession;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +51,7 @@ public class jfrMenu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jmTChambre = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jmiListeTC = new javax.swing.JMenuItem();
         jmOffres = new javax.swing.JMenu();
         jmAttribution = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -75,7 +86,30 @@ public class jfrMenu extends javax.swing.JFrame {
         });
 
         jMenuItem2.setText("Créer un type de chambre");
+        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem2MouseClicked(evt);
+            }
+        });
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jmTChambre.add(jMenuItem2);
+
+        jmiListeTC.setText("Liste de Type de Chambre");
+        jmiListeTC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmiListeTCMouseClicked(evt);
+            }
+        });
+        jmiListeTC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiListeTCActionPerformed(evt);
+            }
+        });
+        jmTChambre.add(jmiListeTC);
 
         jMenu.add(jmTChambre);
 
@@ -118,9 +152,29 @@ public class jfrMenu extends javax.swing.JFrame {
 
     private void jmTChambreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmTChambreMouseClicked
         // TODO add your handling code here:        
+
+    }//GEN-LAST:event_jmTChambreMouseClicked
+
+    private void jmiListeTCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiListeTCMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jmiListeTCMouseClicked
+
+    private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2MouseClicked
+
+    private void jmiListeTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListeTCActionPerformed
+        // TODO add your handling code here:  
+        this.setContentPane(LTChambre);
+        pack();
+    }//GEN-LAST:event_jmiListeTCActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
         this.setContentPane(TChambre);
         pack();
-    }//GEN-LAST:event_jmTChambreMouseClicked
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,5 +220,6 @@ public class jfrMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jmEtablissement;
     private javax.swing.JMenu jmOffres;
     private javax.swing.JMenu jmTChambre;
+    private javax.swing.JMenuItem jmiListeTC;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,17 +6,19 @@
 
 package pkgVues;
 import org.hibernate.Query;
-import org.hibernate.Session;
+
 import pkgEntite.Typechambre;
 import org.hibernate.Transaction;
-import pkgEntite.HibernateUtil;
+import pkgFestival.jfrMenu;
+import pkgVues.jpListeChambre;
 /**
+ * 
  *
  * @author etudSIO
  */
 public class jfAjoutTChambre extends javax.swing.JPanel {
-    private Session session = HibernateUtil.getSessionFactory().openSession();
-
+    
+    
 
     /**
      * Creates new form jfAjoutTChambre
@@ -25,13 +27,7 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
         initComponents();
     }
 
-    public Session getSession(){
-        return session;
-    }
-    
-    public void setSession(Session psession){
-        this.session = psession;
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,6 +66,11 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
         });
 
         jbtnRetour.setText("Retour");
+        jbtnRetour.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbtnRetourMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -124,12 +125,16 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
         unnouveauTypeChambre.setTchId(jtxtId.getText());
         unnouveauTypeChambre.setTchLibelle(jtxtLabelle.getText());
         //jfPrincipal => panel principal
-        Transaction tx = this.getSession().beginTransaction();
-        this.getSession().save(unnouveauTypeChambre);
+        Transaction tx = jfrMenu.getSession().beginTransaction();
+        jfrMenu.getSession().save(unnouveauTypeChambre);
         tx.commit();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnAjouterActionPerformed
+
+    private void jbtnRetourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnRetourMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnRetourMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -141,4 +146,12 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
     private javax.swing.JTextField jtxtId;
     private javax.swing.JTextField jtxtLabelle;
     // End of variables declaration//GEN-END:variables
+
+    private void setContentPane(jpListeChambre LTChambre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void pack() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

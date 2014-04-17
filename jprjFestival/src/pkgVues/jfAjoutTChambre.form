@@ -105,6 +105,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Retour"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbtnRetourMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
