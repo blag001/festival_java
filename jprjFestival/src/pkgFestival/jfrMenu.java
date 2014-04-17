@@ -16,6 +16,7 @@ import pkgVues.jpAjoutEtab;
 public class jfrMenu extends javax.swing.JFrame {
     private static Session session = HibernateUtil.getSessionFactory().openSession();
     protected jpAjoutEtab jpAjoutEtab = new jpAjoutEtab();
+    protected jfAjoutTChambre jfAjoutTChambre = new jfAjoutTChambre();
 
     /**
      * Creates new form jfrMenu
@@ -76,6 +77,11 @@ public class jfrMenu extends javax.swing.JFrame {
         jmTChambre.setText("Gestion types chambres");
 
         jmAjoutChambre.setText("Créer un type de chambre");
+        jmAjoutChambre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAjoutChambreActionPerformed(evt);
+            }
+        });
         jmTChambre.add(jmAjoutChambre);
 
         jMenu.add(jmTChambre);
@@ -116,6 +122,12 @@ public class jfrMenu extends javax.swing.JFrame {
         this.setContentPane(jpAjoutEtab);
         pack();
     }//GEN-LAST:event_jmAjoutEtabActionPerformed
+
+    private void jmAjoutChambreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAjoutChambreActionPerformed
+        // TODO add your handling code here:
+        this.setContentPane(jfAjoutTChambre);
+        pack();
+    }//GEN-LAST:event_jmAjoutChambreActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,7 +6,9 @@ package pkgVues;
 
 import java.util.Iterator;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import pkgEntite.Etablissement;
+import pkgEntite.HibernateUtil;
 import pkgFestival.jfrMenu;
 
 /**
@@ -16,9 +18,19 @@ import pkgFestival.jfrMenu;
 public class jpAjoutEtab extends javax.swing.JPanel 
 {
 
+    private static Session session = HibernateUtil.getSessionFactory().openSession();
     /**
      * Creates new form jpAjoutEtab
      */
+    
+    public static Session getSession() {
+        return session;
+    }
+
+    public static void setSession(Session session) {
+        jpAjoutEtab.session = session;
+    }
+    
     public jpAjoutEtab() {
         initComponents();
         chargerCivilite();

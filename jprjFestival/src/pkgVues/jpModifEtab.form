@@ -31,61 +31,45 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                              <Component id="jlNom" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="txtNom" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jlNom" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                      <Component id="txtNom" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="jlAdresse" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                      <Component id="jlCP" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlVille" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jlAdresse" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                              <Component id="jlCP" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jlVille" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jlTel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jlMail" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtCP" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtAdresse" min="-2" pref="182" max="-2" attributes="0"/>
-                                          <Component id="txtVille" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                          <Component id="txtTel" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
-                                          <Component id="txtMail" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Component id="jlTel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlMail" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtAdresse" min="-2" pref="182" max="-2" attributes="0"/>
+                                  <Component id="txtTel" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="txtMail" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="txtCP" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtVille" alignment="0" pref="99" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jlType" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnType1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnType2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="24" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jlResponsable" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jlID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Component id="txtID" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jlCiviliteResp" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lstCiviliteResp" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="lstCiviliteResp" min="-2" pref="84" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -97,12 +81,30 @@
                                       <Component id="jlNomResp" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtNomResp" min="-2" pref="160" max="-2" attributes="0"/>
-                                      <EmptySpace pref="54" max="32767" attributes="0"/>
+                                      <EmptySpace pref="82" max="32767" attributes="0"/>
                                       <Component id="jlPrenomResp" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtPrenomResp" min="-2" pref="156" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jlType" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnType1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnType2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jlResponsable" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jlID" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                      <Component id="txtID" min="-2" pref="201" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -174,12 +176,12 @@
                   <Component id="jlPrenomResp" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPrenomResp" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="70" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -199,9 +201,6 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtID">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlNom">
       <Properties>
@@ -239,34 +238,16 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtNom">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField2"/>
-      </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtAdresse">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField3"/>
-      </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtCP">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField4"/>
-      </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtVille">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField5"/>
-      </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtTel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField6"/>
-      </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtMail">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField7"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="btnType1">
       <Properties>
@@ -294,12 +275,7 @@
     <Component class="javax.swing.JComboBox" name="lstCiviliteResp">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
     </Component>
@@ -314,14 +290,8 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtNomResp">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField8"/>
-      </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtPrenomResp">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField9"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
