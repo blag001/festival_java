@@ -62,7 +62,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
         txtVille = new java.awt.TextField();
         txtTel = new java.awt.TextField();
         txtMail = new java.awt.TextField();
-        btnType1 = new javax.swing.JRadioButton();
+        btnType = new javax.swing.JRadioButton();
         btnType2 = new javax.swing.JRadioButton();
         jlResponsable = new javax.swing.JLabel();
         jlCiviliteResp = new javax.swing.JLabel();
@@ -95,7 +95,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
 
         jlType.setText("Type* :");
 
-        btnType1.setText("Etablissement Scolaire");
+        btnType.setText("Etablissement Scolaire");
 
         btnType2.setText("Autre");
 
@@ -155,7 +155,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnType1)
+                                        .addComponent(btnType)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnType2))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -234,7 +234,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
                     .addComponent(jlMail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnType1)
+                    .addComponent(btnType)
                     .addComponent(jlType)
                     .addComponent(btnType2))
                 .addGap(39, 39, 39)
@@ -259,7 +259,17 @@ public class jpAjoutEtab extends javax.swing.JPanel
 
     private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
         // TODO add your handling code here:
-        
+        Etablissement unNewEtablissement = new Etablissement();
+        unNewEtablissement.setEtaNom(txtNom.getText());
+        unNewEtablissement.setEtaRue(txtAdresse.getText());
+        unNewEtablissement.setEtaCp(txtCP.getText());
+        unNewEtablissement.setEtaVille(txtVille.getText());
+        unNewEtablissement.setEtaTel(txtTel.getText());
+        unNewEtablissement.setEtaMail(txtMail.getText());
+        unNewEtablissement.setEtaType(btnType.getText());
+        unNewEtablissement.setEtaCivilresp(lstCiviliteResp);
+        unNewEtablissement.setEtaNomresp(txtNomResp.getText());
+        unNewEtablissement.setEtaPrenomresp(txtPrenomResp.getText());
     }//GEN-LAST:event_btnValiderActionPerformed
 
     private void lstCiviliteRespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lstCiviliteRespActionPerformed
@@ -283,7 +293,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
      } 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnnuler;
-    private javax.swing.JRadioButton btnType1;
+    private javax.swing.JRadioButton btnType;
     private javax.swing.JRadioButton btnType2;
     private javax.swing.JButton btnValider;
     private javax.swing.JLabel jLabel6;

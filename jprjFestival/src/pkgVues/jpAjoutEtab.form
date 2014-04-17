@@ -56,7 +56,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnType1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnType" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnType2" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -162,7 +162,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnType1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnType" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jlType" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnType2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -254,7 +254,7 @@
     </Component>
     <Component class="java.awt.TextField" name="txtMail">
     </Component>
-    <Component class="javax.swing.JRadioButton" name="btnType1">
+    <Component class="javax.swing.JRadioButton" name="btnType">
       <Properties>
         <Property name="text" type="java.lang.String" value="Etablissement Scolaire"/>
       </Properties>
