@@ -5,6 +5,7 @@
 package pkgFestival;
 
 import pkgVues.jpAjoutEtab;
+import pkgVues.jfAjoutTChambre;
 
 
 /**
@@ -12,8 +13,12 @@ import pkgVues.jpAjoutEtab;
  * @author etudsio
  */
 public class jfrMenu extends javax.swing.JFrame {
-    protected jpAjoutEtab Accueil = new jpAjoutEtab();
 
+    /**
+     *
+     */
+    protected jfAjoutTChambre TChambre = new jfAjoutTChambre();
+    protected jpAjoutEtab TEtab = new jpAjoutEtab();
     /**
      * Creates new form jfrMenu
      */
@@ -58,6 +63,16 @@ public class jfrMenu extends javax.swing.JFrame {
         jMenu.add(jmEtablissement);
 
         jmTChambre.setText("Gestion types chambres");
+        jmTChambre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmTChambreMouseClicked(evt);
+            }
+        });
+        jmTChambre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmTChambreActionPerformed(evt);
+            }
+        });
 
         jMenuItem2.setText("Créer un type de chambre");
         jmTChambre.add(jMenuItem2);
@@ -92,9 +107,20 @@ public class jfrMenu extends javax.swing.JFrame {
 
     private void jmEtablissementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmEtablissementMouseClicked
         // TODO add your handling code here:
-        this.setContentPane(Accueil);
+        this.setContentPane(TEtab);
         pack();
     }//GEN-LAST:event_jmEtablissementMouseClicked
+
+    private void jmTChambreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmTChambreActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jmTChambreActionPerformed
+
+    private void jmTChambreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmTChambreMouseClicked
+        // TODO add your handling code here:        
+        this.setContentPane(TChambre);
+        pack();
+    }//GEN-LAST:event_jmTChambreMouseClicked
 
     /**
      * @param args the command line arguments

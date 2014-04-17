@@ -4,15 +4,19 @@
  * and open the template in the editor.
  */
 
-package pkgFestival;
+package pkgVues;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import pkgEntite.Typechambre;
 import org.hibernate.Transaction;
+import pkgEntite.HibernateUtil;
 /**
  *
  * @author etudSIO
  */
 public class jfAjoutTChambre extends javax.swing.JPanel {
+    private Session session = HibernateUtil.getSessionFactory().openSession();
+
 
     /**
      * Creates new form jfAjoutTChambre
@@ -21,6 +25,13 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
         initComponents();
     }
 
+    public Session getSession(){
+        return session;
+    }
+    
+    public void setSession(Session psession){
+        this.session = psession;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,8 +124,8 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
         unnouveauTypeChambre.setTchId(jtxtId.getText());
         unnouveauTypeChambre.setTchLibelle(jtxtLabelle.getText());
         //jfPrincipal => panel principal
-        Transaction tx = jfPrincipal.getSession().beginTransaction();
-        jfPrincipal.getSession().save(unnouveauTypeChambre);
+        Transaction tx = this.getSession().beginTransaction();
+        this.getSession().save(unnouveauTypeChambre);
         tx.commit();
         
         // TODO add your handling code here:
