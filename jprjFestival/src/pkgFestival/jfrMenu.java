@@ -5,6 +5,7 @@
 package pkgFestival;
 
 import org.hibernate.Session;
+import pkgEntite.HibernateUtil;
 import pkgVues.jpAjoutEtab;
 import pkgVues.jfAjoutTChambre;
 import pkgVues.jpListeChambre;
@@ -16,25 +17,28 @@ import pkgEntite.HibernateUtil;
  * @author etudsio
  */
 public class jfrMenu extends javax.swing.JFrame {
-    public Session session = HibernateUtil.getSessionFactory().openSession();
+    private Session session = HibernateUtil.getSessionFactory().openSession();
     /**
      *
      */
     protected jfAjoutTChambre TChambre = new jfAjoutTChambre();
     protected jpAjoutEtab TEtab = new jpAjoutEtab();
     protected jpListeChambre LTChambre = new jpListeChambre();
+    protected jpAjoutEtab jpAjoutEtab = new jpAjoutEtab();
+
     /**
      * Creates new form jfrMenu
      */
     public jfrMenu() {
         initComponents();
-    }
-    public Session getSession(){
+    }    
+
+    public static Session getSession() {
         return session;
     }
-    
-    public void setSession(Session psession){
-        this.session = psession;
+
+    public static void setSession(Session session) {
+        this.session = session;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,10 +52,14 @@ public class jfrMenu extends javax.swing.JFrame {
         jMenu = new javax.swing.JMenuBar();
         jmAccueil = new javax.swing.JMenu();
         jmEtablissement = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmAjoutEtab = new javax.swing.JMenuItem();
         jmTChambre = new javax.swing.JMenu();
+<<<<<<< HEAD
         jMenuItem2 = new javax.swing.JMenuItem();
         jmiListeTC = new javax.swing.JMenuItem();
+=======
+        jmAjoutChambre = new javax.swing.JMenuItem();
+>>>>>>> 7c9de83f799e291f901045e52fe9fd3c9884cb08
         jmOffres = new javax.swing.JMenu();
         jmAttribution = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -68,8 +76,13 @@ public class jfrMenu extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Créer un établissement");
-        jmEtablissement.add(jMenuItem1);
+        jmAjoutEtab.setText("Créer un établissement");
+        jmAjoutEtab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAjoutEtabActionPerformed(evt);
+            }
+        });
+        jmEtablissement.add(jmAjoutEtab);
 
         jMenu.add(jmEtablissement);
 
@@ -85,6 +98,7 @@ public class jfrMenu extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jMenuItem2.setText("Créer un type de chambre");
         jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -97,6 +111,10 @@ public class jfrMenu extends javax.swing.JFrame {
             }
         });
         jmTChambre.add(jMenuItem2);
+=======
+        jmAjoutChambre.setText("Créer un type de chambre");
+        jmTChambre.add(jmAjoutChambre);
+>>>>>>> 7c9de83f799e291f901045e52fe9fd3c9884cb08
 
         jmiListeTC.setText("Liste de Type de Chambre");
         jmiListeTC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,6 +194,15 @@ public class jfrMenu extends javax.swing.JFrame {
         pack();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+        
+    }                                            
+
+    private void jmAjoutEtabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAjoutEtabActionPerformed
+        // TODO add your handling code here:
+        this.setContentPane(jpAjoutEtab);
+        pack();
+    }//GEN-LAST:event_jmAjoutEtabActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,10 +239,10 @@ public class jfrMenu extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenu;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmAccueil;
+    private javax.swing.JMenuItem jmAjoutChambre;
+    private javax.swing.JMenuItem jmAjoutEtab;
     private javax.swing.JMenu jmAttribution;
     private javax.swing.JMenu jmEtablissement;
     private javax.swing.JMenu jmOffres;
