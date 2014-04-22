@@ -4,21 +4,13 @@
  * and open the template in the editor.
  */
 
-package pkgVues;
-import org.hibernate.Query;
+package pkgFestival;
 
-import pkgEntite.Typechambre;
-import org.hibernate.Transaction;
-import pkgFestival.jfrMenu;
-import pkgVues.jpListeChambre;
 /**
- * 
  *
  * @author etudSIO
  */
 public class jfAjoutTChambre extends javax.swing.JPanel {
-    
-    
 
     /**
      * Creates new form jfAjoutTChambre
@@ -26,7 +18,6 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
     public jfAjoutTChambre() {
         initComponents();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,18 +50,8 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
         });
 
         jbtnAjouter.setText("Ajouter");
-        jbtnAjouter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnAjouterActionPerformed(evt);
-            }
-        });
 
         jbtnRetour.setText("Retour");
-        jbtnRetour.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbtnRetourMouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,28 +60,29 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
+                        .addGap(163, 163, 163)
                         .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(109, 109, 109)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbtnAjouter)
                             .addComponent(jbtnRetour)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jtxtLabelle, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtxtId, javax.swing.GroupLayout.Alignment.LEADING)))))
-                .addContainerGap(135, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtxtLabelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jbtnAjouter))))))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(67, 67, 67)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -110,31 +92,15 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
                     .addComponent(jtxtLabelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jbtnAjouter)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jbtnRetour)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtxtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtIdActionPerformed
-
-    private void jbtnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAjouterActionPerformed
-        Typechambre unnouveauTypeChambre = new Typechambre();
-        unnouveauTypeChambre.setTchId(jtxtId.getText());
-        unnouveauTypeChambre.setTchLibelle(jtxtLabelle.getText());
-        //jfPrincipal => panel principal
-        Transaction tx = jfrMenu.getSession().beginTransaction();
-        jfrMenu.getSession().save(unnouveauTypeChambre);
-        tx.commit();
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnAjouterActionPerformed
-
-    private void jbtnRetourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnRetourMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnRetourMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -146,12 +112,4 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
     private javax.swing.JTextField jtxtId;
     private javax.swing.JTextField jtxtLabelle;
     // End of variables declaration//GEN-END:variables
-
-    private void setContentPane(jpListeChambre LTChambre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void pack() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
