@@ -4,6 +4,12 @@
  */
 package pkgVues;
 
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.Query;
+import pkgEntite.Etablissement;
+import pkgFestival.jfrMenu;
+
 /**
  *
  * @author etudsio
@@ -15,8 +21,28 @@ public class jpConsulterEtab extends javax.swing.JPanel {
      */
     public jpConsulterEtab() {
         initComponents();
+        chargerTable();
     }
 
+    public void chargerTable() {
+        //On charge la liste des établissements dans un tableau
+        int nbligne;
+        int i;
+        nbligne = TabEtab.getRowCount();
+        if(nbligne > 0){
+            for(i=0; i < nbligne; i++){
+                ((DefaultTableModel)TabEtab.getModel()).removeRow(0);
+            }
+        String sReq = "From Etablissement";
+        
+        Query q = jfrMenu.getSession().createQuery(sReq);
+        Iterator etab = q.iterate();
+        while(etab.hasNext()){
+            Etablissement unEtablissement = (Etablissement) etab.next();
+            ((DefaultTableModel) TabEtab.getModel()).addRow(newObject[] (unEtablissement.getEtaId(), unEtablissement.getEtaNom()));
+        }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

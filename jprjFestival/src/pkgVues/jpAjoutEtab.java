@@ -7,6 +7,7 @@ package pkgVues;
 import java.util.Iterator;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import pkgEntite.Etablissement;
 import pkgEntite.HibernateUtil;
 import pkgFestival.jfrMenu;
@@ -46,6 +47,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
     private void initComponents() {
 
         jLabel6 = new javax.swing.JLabel();
+        grp_type = new javax.swing.ButtonGroup();
         jlTitre = new javax.swing.JLabel();
         jlID = new javax.swing.JLabel();
         txtID = new java.awt.TextField();
@@ -95,8 +97,10 @@ public class jpAjoutEtab extends javax.swing.JPanel
 
         jlType.setText("Type* :");
 
+        grp_type.add(btnType);
         btnType.setText("Etablissement Scolaire");
 
+        grp_type.add(btnType2);
         btnType2.setText("Autre");
 
         jlResponsable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -258,6 +262,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
+        String sCivilite;
         // TODO add your handling code here:
         Etablissement unNewEtablissement = new Etablissement();
         unNewEtablissement.setEtaNom(txtNom.getText());
@@ -266,10 +271,15 @@ public class jpAjoutEtab extends javax.swing.JPanel
         unNewEtablissement.setEtaVille(txtVille.getText());
         unNewEtablissement.setEtaTel(txtTel.getText());
         unNewEtablissement.setEtaMail(txtMail.getText());
-        unNewEtablissement.setEtaType(btnType.getText());
-        unNewEtablissement.setEtaCivilresp(lstCiviliteResp);
+        unNewEtablissement.setEtaType(btnType.getText());//isSelected pour les boutons radio
+        sCivilite = (String) lstCiviliteResp.getSelectedItem();
+        unNewEtablissement.setEtaCivilresp(sCivilite);
         unNewEtablissement.setEtaNomresp(txtNomResp.getText());
         unNewEtablissement.setEtaPrenomresp(txtPrenomResp.getText());
+        
+        Transaction tx = jfrMenu.getSession().beginTransaction();
+        jfrMenu.getSession().save(unNewEtablissement);
+        tx.commit();
     }//GEN-LAST:event_btnValiderActionPerformed
 
     private void lstCiviliteRespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lstCiviliteRespActionPerformed
@@ -296,6 +306,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
     private javax.swing.JRadioButton btnType;
     private javax.swing.JRadioButton btnType2;
     private javax.swing.JButton btnValider;
+    private javax.swing.ButtonGroup grp_type;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jlAdresse;
     private javax.swing.JLabel jlCP;
