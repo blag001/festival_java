@@ -131,16 +131,9 @@ public class jpAjoutEtab extends javax.swing.JPanel
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlTitre)
-                .addGap(276, 276, 276))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jlType)
-                        .addGap(246, 618, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,48 +163,49 @@ public class jpAjoutEtab extends javax.swing.JPanel
                                         .addGap(2, 2, 2))
                                     .addComponent(txtCP, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 372, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlType)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jlCiviliteResp)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lstCiviliteResp, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGap(100, 100, 100)
                                         .addComponent(btnValider)
                                         .addGap(36, 36, 36)
-                                        .addComponent(btnAnnuler)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(btnAnnuler))
                                     .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lstCiviliteResp, 0, 90, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jlNomResp)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtNomResp, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jlPrenomResp)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtPrenomResp, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jlResponsable)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlResponsable)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jlID)
-                                        .addGap(53, 53, 53)
-                                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jlID)
+                                .addGap(53, 53, 53)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(264, 264, 264)
+                .addComponent(jlTitre)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(31, 31, 31)
+                .addComponent(jlTitre)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlTitre)
-                        .addGap(48, 48, 48)
-                        .addComponent(jlID)))
+                    .addComponent(jlID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jlNom)
@@ -248,11 +242,11 @@ public class jpAjoutEtab extends javax.swing.JPanel
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlCiviliteResp)
-                            .addComponent(lstCiviliteResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlNomResp)))
-                    .addComponent(txtNomResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lstCiviliteResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jlPrenomResp)
-                    .addComponent(txtPrenomResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrenomResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlNomResp)
+                    .addComponent(txtNomResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnValider)
@@ -262,8 +256,16 @@ public class jpAjoutEtab extends javax.swing.JPanel
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderActionPerformed
-        String sCivilite;
         // TODO add your handling code here:
+        String sCivilite;
+        boolean type;
+        if(btnType.isSelected()){
+            type = true;
+        }
+        else{
+            type = false;
+        }
+        
         Etablissement unNewEtablissement = new Etablissement();
         unNewEtablissement.setEtaNom(txtNom.getText());
         unNewEtablissement.setEtaRue(txtAdresse.getText());
@@ -271,7 +273,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
         unNewEtablissement.setEtaVille(txtVille.getText());
         unNewEtablissement.setEtaTel(txtTel.getText());
         unNewEtablissement.setEtaMail(txtMail.getText());
-        unNewEtablissement.setEtaType(btnType.getText());//isSelected pour les boutons radio
+        unNewEtablissement.setEtaType(type);
         sCivilite = (String) lstCiviliteResp.getSelectedItem();
         unNewEtablissement.setEtaCivilresp(sCivilite);
         unNewEtablissement.setEtaNomresp(txtNomResp.getText());
@@ -292,7 +294,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
             jfrMenu.getSession().beginTransaction();
             Query q = jfrMenu.getSession().createQuery(sReq);
 
-            Iterator civilite = q.iterate();
+//            Iterator civilite = q.iterate();
 //            while (civilite.hasNext()){
 //                Etablissement uneCivilite = (Etablissement)civilite.next();
 //                lstCiviliteResp.addItem(uneCivilite.getEtaCivilresp());

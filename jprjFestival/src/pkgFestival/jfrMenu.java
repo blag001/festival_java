@@ -7,6 +7,7 @@ package pkgFestival;
 import org.hibernate.Session;
 import pkgEntite.HibernateUtil;
 import pkgVues.jpAjoutEtab;
+import pkgVues.jpConsulterEtab;
 
 
 /**
@@ -16,6 +17,7 @@ import pkgVues.jpAjoutEtab;
 public class jfrMenu extends javax.swing.JFrame {
     private static Session session = HibernateUtil.getSessionFactory().openSession();
     protected jpAjoutEtab jpAjoutEtab = new jpAjoutEtab();
+    protected jpConsulterEtab jpConsulterEtab = new jpConsulterEtab();
     protected jfAjoutTChambre jfAjoutTChambre = new jfAjoutTChambre();
 
     /**
@@ -46,6 +48,7 @@ public class jfrMenu extends javax.swing.JFrame {
         jmAccueil = new javax.swing.JMenu();
         jmEtablissement = new javax.swing.JMenu();
         jmAjoutEtab = new javax.swing.JMenuItem();
+        jmAffichEtab = new javax.swing.JMenuItem();
         jmTChambre = new javax.swing.JMenu();
         jmAjoutChambre = new javax.swing.JMenuItem();
         jmOffres = new javax.swing.JMenu();
@@ -71,6 +74,14 @@ public class jfrMenu extends javax.swing.JFrame {
             }
         });
         jmEtablissement.add(jmAjoutEtab);
+
+        jmAffichEtab.setText("Afficher établissements");
+        jmAffichEtab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAffichEtabActionPerformed(evt);
+            }
+        });
+        jmEtablissement.add(jmAffichEtab);
 
         jMenu.add(jmEtablissement);
 
@@ -129,6 +140,12 @@ public class jfrMenu extends javax.swing.JFrame {
         pack();
     }//GEN-LAST:event_jmAjoutChambreActionPerformed
 
+    private void jmAffichEtabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAffichEtabActionPerformed
+        // TODO add your handling code here:
+        this.setContentPane(jpConsulterEtab);
+        pack();
+    }//GEN-LAST:event_jmAffichEtabActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -167,6 +184,7 @@ public class jfrMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenu;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmAccueil;
+    private javax.swing.JMenuItem jmAffichEtab;
     private javax.swing.JMenuItem jmAjoutChambre;
     private javax.swing.JMenuItem jmAjoutEtab;
     private javax.swing.JMenu jmAttribution;
