@@ -5,6 +5,7 @@
 package pkgVues;
 
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -284,6 +285,19 @@ public class jpAjoutEtab extends javax.swing.JPanel
         Transaction tx = jfrMenu.getSession().beginTransaction();
         jfrMenu.getSession().save(unNewEtablissement);
         tx.commit();
+        
+        JOptionPane.showMessageDialog(null, "Ajout bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+        
+        txtID.setText("");
+        txtNom.setText("");
+        txtAdresse.setText("");
+        txtCP.setText("");
+        txtVille.setText("");
+        txtTel.setText("");
+        txtMail.setText("");
+        txtNomResp.setText("");
+        txtPrenomResp.setText("");
+        
     }//GEN-LAST:event_btnValiderActionPerformed
 
     private void lstCiviliteRespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lstCiviliteRespActionPerformed
