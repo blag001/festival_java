@@ -266,7 +266,10 @@ public class jpAjoutEtab extends javax.swing.JPanel
             type = false;
         }
         
+        sCivilite = (String) lstCiviliteResp.getSelectedItem();
+        
         Etablissement unNewEtablissement = new Etablissement();
+        unNewEtablissement.setEtaId(txtID.getText());
         unNewEtablissement.setEtaNom(txtNom.getText());
         unNewEtablissement.setEtaRue(txtAdresse.getText());
         unNewEtablissement.setEtaCp(txtCP.getText());
@@ -274,7 +277,6 @@ public class jpAjoutEtab extends javax.swing.JPanel
         unNewEtablissement.setEtaTel(txtTel.getText());
         unNewEtablissement.setEtaMail(txtMail.getText());
         unNewEtablissement.setEtaType(type);
-        sCivilite = (String) lstCiviliteResp.getSelectedItem();
         unNewEtablissement.setEtaCivilresp(sCivilite);
         unNewEtablissement.setEtaNomresp(txtNomResp.getText());
         unNewEtablissement.setEtaPrenomresp(txtPrenomResp.getText());
@@ -290,9 +292,9 @@ public class jpAjoutEtab extends javax.swing.JPanel
     }//GEN-LAST:event_lstCiviliteRespActionPerformed
     private void chargerCivilite()
     {
-            String sReq = "from Etablissement";
-            jfrMenu.getSession().beginTransaction();
-            Query q = jfrMenu.getSession().createQuery(sReq);
+//            String sReq = "from Etablissement";
+//            jfrMenu.getSession().beginTransaction();
+//            Query q = jfrMenu.getSession().createQuery(sReq);
 
 //            Iterator civilite = q.iterate();
 //            while (civilite.hasNext()){

@@ -15,7 +15,6 @@ import pkgFestival.jfrMenu;
  * @author etudsio
  */
 public class jpConsulterEtab extends javax.swing.JPanel {
-
     /**
      * Creates new form jpConsulterEtab
      */
@@ -29,19 +28,21 @@ public class jpConsulterEtab extends javax.swing.JPanel {
         int nbligne;
         int i;
         nbligne = TabEtab.getRowCount();
-        if(nbligne > 0){
+        if(nbligne > 0)
+        {
             for(i=0; i < nbligne; i++){
                 ((DefaultTableModel)TabEtab.getModel()).removeRow(0);
             }
-        String sReq = "From Etablissement";
-        
-        Query q = jfrMenu.getSession().createQuery(sReq);
-        Iterator etab = q.iterate();
-       
-        while(etab.hasNext()){
-            Etablissement unEtablissement = (Etablissement) etab.next();
-            ((DefaultTableModel) TabEtab.getModel()).addRow(new Object[] {unEtablissement.getEtaId(), unEtablissement.getEtaNom()});
-        }
+            String sReq = "From Etablissement";
+
+            Query q = jfrMenu.getSession().createQuery(sReq);
+            Iterator etab = q.iterate();
+
+            while(etab.hasNext())
+            {
+                Etablissement unEtablissement = (Etablissement) etab.next();
+                ((DefaultTableModel) TabEtab.getModel()).addRow(new Object[] {unEtablissement.getEtaId(), unEtablissement.getEtaNom()});
+            }
         }
     }
     /**
@@ -276,8 +277,56 @@ public class jpConsulterEtab extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TabEtabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabEtabMouseClicked
-        // TODO add your handling code here:           
-        int Code = TabEtab.getSelectedRow();
+        // TODO add your handling code here:  
+        String sQuery;
+        
+        int Id = TabEtab.getSelectedRow();
+        
+        Object sId = TabEtab.getValueAt(Id, 0);
+        String EtabId = (String) sId;
+        if (EtabId != null)
+        {
+            sQuery = "From Etablissement Where etaId =?";
+            System.out.println(EtabId);
+            jfrMenu.getSession().beginTransaction();
+            Query q = jfrMenu.getSession().createQuery(sQuery);
+            q.setParameter(0, EtabId);
+            Iterator etab = q.iterate();
+            while(etab.hasNext())
+            {
+                Etablissement unEtablissement = (Etablissement) etab.next();
+                String id = (String) unEtablissement.getEtaId();
+                System.out.println(id);
+                String nom = (String) unEtablissement.getEtaNom();
+                System.out.println(nom);
+                String rue = (String) unEtablissement.getEtaRue();
+                System.out.println(rue);
+                String cp = (String) unEtablissement.getEtaCp();
+                System.out.println(cp);
+                String ville = (String) unEtablissement.getEtaVille();
+                System.out.println(ville);
+                String tel = (String) unEtablissement.getEtaTel();
+                System.out.println(tel);
+                String mail = (String) unEtablissement.getEtaMail();
+                System.out.println(mail);
+                String civilResp = (String) unEtablissement.getEtaCivilresp();
+                System.out.println(civilResp);
+                String nomResp = (String) unEtablissement.getEtaNomresp();
+                System.out.println(nomResp);
+                String prenomResp = (String) unEtablissement.getEtaPrenomresp();
+                System.out.println(prenomResp);
+                txtID.setText(id);
+                txtNom.setText(nom);
+                txtAdresse.setText(rue);
+                txtCp.setText(cp);
+                txtVille.setText(ville);
+                txtTel.setText(tel);
+                txtMail.setText(mail);
+//                jlCiviliteResp.setText(civilResp);
+                txtNomResp.setText(nomResp);
+                txtPrenomResp.setText(prenomResp);
+            }
+        }
     }//GEN-LAST:event_TabEtabMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
