@@ -6,6 +6,7 @@
 
 package pkgVues;
 
+import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pkgEntite.HibernateUtil;
@@ -125,6 +126,8 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
         Transaction tx = jfrMenu.getSession().beginTransaction();
         jfrMenu.getSession().save(unnouveauTChambre);
         tx.commit();
+        
+        JOptionPane.showMessageDialog(null, "Ajout bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
         
         jtxtId.setText("");
         jtxtLabelle.setText("");
