@@ -38,7 +38,7 @@ public class jpListeChambre extends javax.swing.JPanel {
             for(i=0; i < nbligne; i++){
                 ((DefaultTableModel)jTableChambre.getModel()).removeRow(0);
             }
-            String sReq = "From Typechambre";
+            String sReq = "From Typechambre order by TCh_Id ASC";
 
             Query q = jfrMenu.getSession().createQuery(sReq);
             Iterator etab = q.iterate();
@@ -68,6 +68,7 @@ public class jpListeChambre extends javax.swing.JPanel {
         jtxtLibelle = new javax.swing.JTextField();
         jtxtId = new javax.swing.JTextField();
         jbModifier = new javax.swing.JButton();
+        jbSupprimer = new javax.swing.JButton();
 
         jTableChambre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,29 +114,40 @@ public class jpListeChambre extends javax.swing.JPanel {
             }
         });
 
+        jbSupprimer.setText("SUPPRIMER");
+        jbSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSupprimerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(187, 187, 187)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(187, 187, 187)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtxtLibelle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtxtLibelle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jbModifier)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
+                        .addGap(195, 195, 195)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbSupprimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbModifier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(272, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -158,9 +170,11 @@ public class jpListeChambre extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jtxtLibelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
+                        .addGap(28, 28, 28)
                         .addComponent(jbModifier)
-                        .addGap(39, 39, 39))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbSupprimer)
+                        .addGap(15, 15, 15))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -208,8 +222,31 @@ public class jpListeChambre extends javax.swing.JPanel {
         unTChambre.setTchLibelle(jtxtLibelle.getText());
         Transaction tx =jfrMenu.getSession().beginTransaction();
         tx.commit();
-        JOptionPane.showMessageDialog(null, "Modification bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Modification bien effectuée !", "Information", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jbModifierActionPerformed
+
+    private void jbSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSupprimerActionPerformed
+        // TODO add your handling code here:
+        String id = (String) jtxtId.getText();
+        String sReq = "From Typechambre Where TCh_Id =?";
+        
+        Query q = jfrMenu.getSession().createQuery(sReq);
+        q.setParameter(0, id);
+        
+        Typechambre unTChambre = (Typechambre) q.uniqueResult();
+        
+        Transaction tx = jfrMenu.getSession().beginTransaction();
+
+        jfrMenu.getSession().delete(unTChambre);
+
+        chargerTable();
+        
+        jtxtId.setText("");
+        jtxtLibelle.setText("");
+        
+        tx.commit();
+        JOptionPane.showMessageDialog(null, "Suppression bien effectuée !", "Information", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jbSupprimerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -220,6 +257,7 @@ public class jpListeChambre extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableChambre;
     private javax.swing.JButton jbModifier;
+    private javax.swing.JButton jbSupprimer;
     private javax.swing.JTextField jtxtId;
     private javax.swing.JTextField jtxtLibelle;
     // End of variables declaration//GEN-END:variables
