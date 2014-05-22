@@ -215,14 +215,22 @@ public class jpListeChambre extends javax.swing.JPanel {
 
     private void jbModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModifierActionPerformed
         // TODO add your handling code here:
-        String sReq = "From Typechambre Where TCh_Id = ?";
-        Query q = jfrMenu.getSession().createQuery(sReq);
-        q.setParameter(0, jtxtId.getText());
-        Typechambre unTChambre = (Typechambre) q.uniqueResult();
-        unTChambre.setTchLibelle(jtxtLibelle.getText());
-        Transaction tx =jfrMenu.getSession().beginTransaction();
-        tx.commit();
-        JOptionPane.showMessageDialog(null, "Modification bien effectuée !", "Information", JOptionPane.INFORMATION_MESSAGE);
+        if("".equals(jtxtLibelle.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "Vérifier vos champs !", "Information", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            String sReq = "From Typechambre Where TCh_Id = ?";
+            Query q = jfrMenu.getSession().createQuery(sReq);
+            q.setParameter(0, jtxtId.getText());
+            Typechambre unTChambre = (Typechambre) q.uniqueResult();
+            unTChambre.setTchLibelle(jtxtLibelle.getText());
+            Transaction tx =jfrMenu.getSession().beginTransaction();
+            jfrMenu.getSession().update(unTChambre);
+            tx.commit();
+            JOptionPane.showMessageDialog(null, "Modification bien effectuée !", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jbModifierActionPerformed
 
     private void jbSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSupprimerActionPerformed

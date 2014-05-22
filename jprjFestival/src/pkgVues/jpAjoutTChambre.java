@@ -124,13 +124,23 @@ protected jpListeChambre jpListeChambre = new jpListeChambre();
         unnouveauTChambre.setTchId(jtxtId.getText());
         unnouveauTChambre.setTchLibelle(jtxtLabelle.getText());
         Transaction tx = jfrMenu.getSession().beginTransaction();
-        jfrMenu.getSession().save(unnouveauTChambre);
-        tx.commit();
         
-        JOptionPane.showMessageDialog(null, "Ajout bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+        if("".equals(jtxtId.getText()) || "".equals(jtxtLabelle.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "Vérifier vos champs!", "Information", JOptionPane.ERROR_MESSAGE);   
+        }
+        else
+        {
+            jfrMenu.getSession().save(unnouveauTChambre);
+            tx.commit();
+            JOptionPane.showMessageDialog(null, "Ajout bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+            jtxtId.setText("");
+            jtxtLabelle.setText("");
+        }
         
-        jtxtId.setText("");
-        jtxtLabelle.setText("");
+        
+        
+
     }//GEN-LAST:event_jbtnAjouterActionPerformed
 
 
