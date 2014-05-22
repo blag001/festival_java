@@ -33,9 +33,11 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jtxtId" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jtxtLabelle" min="-2" max="-2" attributes="0"/>
                                   <Component id="jbtnAjouter" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jtxtId" alignment="0" pref="50" max="32767" attributes="0"/>
+                                      <Component id="jtxtLabelle" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -82,13 +84,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Labelle : "/>
+        <Property name="text" type="java.lang.String" value="Libelle : "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtxtId">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtIdActionPerformed"/>
       </Events>
@@ -99,6 +98,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ajouter"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnAjouterActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbtnRetour">
       <Properties>

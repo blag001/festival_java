@@ -4,8 +4,14 @@
  * and open the template in the editor.
  */
 
-package pkgFestival;
+package pkgVues;
 
+import javax.swing.JOptionPane;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import pkgEntite.HibernateUtil;
+import pkgEntite.Typechambre;
+import pkgFestival.jfrMenu;
 /**
  *
  * @author etudSIO
@@ -18,7 +24,11 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
     public jfAjoutTChambre() {
         initComponents();
     }
-
+    
+    private static Session session = HibernateUtil.getSessionFactory().openSession();
+    /**
+     * Creates new form jpAjoutEtab
+     */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,9 +50,8 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
 
         jLabel2.setText("Id*:");
 
-        jLabel3.setText("Labelle : ");
+        jLabel3.setText("Libelle : ");
 
-        jtxtId.setText("jTextField1");
         jtxtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxtIdActionPerformed(evt);
@@ -50,6 +59,11 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
         });
 
         jbtnAjouter.setText("Ajouter");
+        jbtnAjouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAjouterActionPerformed(evt);
+            }
+        });
 
         jbtnRetour.setText("Retour");
 
@@ -72,9 +86,10 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
                                     .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtxtLabelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jbtnAjouter))))))
+                                    .addComponent(jbtnAjouter)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jtxtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                                        .addComponent(jtxtLabelle, javax.swing.GroupLayout.Alignment.LEADING)))))))
                 .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,6 +116,22 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
     private void jtxtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtIdActionPerformed
+
+    private void jbtnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAjouterActionPerformed
+        // TODO add your handling code here:
+        Typechambre unnouveauTChambre = new Typechambre();
+        
+        unnouveauTChambre.setTchId(jtxtId.getText());
+        unnouveauTChambre.setTchLibelle(jtxtLabelle.getText());
+        Transaction tx = jfrMenu.getSession().beginTransaction();
+        jfrMenu.getSession().save(unnouveauTChambre);
+        tx.commit();
+        
+        JOptionPane.showMessageDialog(null, "Ajout bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+        
+        jtxtId.setText("");
+        jtxtLabelle.setText("");
+    }//GEN-LAST:event_jbtnAjouterActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,10 +4,12 @@
  */
 package pkgFestival;
 
+import pkgVues.jfAjoutTChambre;
 import org.hibernate.Session;
 import pkgEntite.HibernateUtil;
 import pkgVues.jpAjoutEtab;
 import pkgVues.jpConsulterEtab;
+import pkgVues.jpConsulterOffre;
 
 
 /**
@@ -19,6 +21,7 @@ public class jfrMenu extends javax.swing.JFrame {
     protected jpAjoutEtab jpAjoutEtab = new jpAjoutEtab();
     protected jpConsulterEtab jpConsulterEtab = new jpConsulterEtab();
     protected jfAjoutTChambre jfAjoutTChambre = new jfAjoutTChambre();
+	protected jpConsulterOffre jpConsulterOffre = new jpConsulterOffre();
 
     /**
      * Creates new form jfrMenu
@@ -52,6 +55,7 @@ public class jfrMenu extends javax.swing.JFrame {
         jmTChambre = new javax.swing.JMenu();
         jmAjoutChambre = new javax.swing.JMenuItem();
         jmOffres = new javax.swing.JMenu();
+        jmAfficherOffre = new javax.swing.JMenuItem();
         jmAttribution = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -98,6 +102,15 @@ public class jfrMenu extends javax.swing.JFrame {
         jMenu.add(jmTChambre);
 
         jmOffres.setText("Offre hébergement");
+
+        jmAfficherOffre.setText("Afficher offres");
+        jmAfficherOffre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAfficherOffreActionPerformed(evt);
+            }
+        });
+        jmOffres.add(jmAfficherOffre);
+
         jMenu.add(jmOffres);
 
         jmAttribution.setText("Attribution chambres");
@@ -146,6 +159,10 @@ public class jfrMenu extends javax.swing.JFrame {
         pack();
     }//GEN-LAST:event_jmAffichEtabActionPerformed
 
+    private void jmAfficherOffreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAfficherOffreActionPerformed
+       this.setContentPane(jpConsulterOffre);
+    }//GEN-LAST:event_jmAfficherOffreActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,6 +202,7 @@ public class jfrMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmAccueil;
     private javax.swing.JMenuItem jmAffichEtab;
+    private javax.swing.JMenuItem jmAfficherOffre;
     private javax.swing.JMenuItem jmAjoutChambre;
     private javax.swing.JMenuItem jmAjoutEtab;
     private javax.swing.JMenu jmAttribution;
