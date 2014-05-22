@@ -6,6 +6,14 @@
 
 package pkgVues;
 
+import java.util.Iterator;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.Query;
+import org.hibernate.Transaction;
+import pkgEntite.Typechambre;
+import pkgFestival.jfrMenu;
+
 /**
  *
  * @author etudSIO
@@ -13,12 +21,35 @@ package pkgVues;
 public class jpListeChambre extends javax.swing.JPanel {
 
     /**
-     * Creates new form jpListeChambre
+     * Creates new f0orm jpListeChambre
      */
     public jpListeChambre() {
         initComponents();
+        chargerTable();
     }
+    
+        public void chargerTable() {
+        //On charge la liste des établissements dans un tableau
+        int nbligne;
+        int i;
+        nbligne = jTableChambre.getRowCount();
+        if(nbligne > 0)
+        {
+            for(i=0; i < nbligne; i++){
+                ((DefaultTableModel)jTableChambre.getModel()).removeRow(0);
+            }
+            String sReq = "From Typechambre";
 
+            Query q = jfrMenu.getSession().createQuery(sReq);
+            Iterator etab = q.iterate();
+
+            while(etab.hasNext())
+            {
+                Typechambre unTChambre = (Typechambre) etab.next();
+                ((DefaultTableModel) jTableChambre.getModel()).addRow(new Object[] {unTChambre.getTchId()});
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,30 +59,168 @@ public class jpListeChambre extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jbtnAjoutTChambre = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableChambre = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jtxtLibelle = new javax.swing.JTextField();
+        jtxtId = new javax.swing.JTextField();
+        jbModifier = new javax.swing.JButton();
 
-        jbtnAjoutTChambre.setText("Ajouter un type de chambre");
+        jTableChambre.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Identifiant"
+            }
+        ));
+        jTableChambre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableChambreMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableChambre);
+
+        jLabel1.setText("ID :");
+
+        jLabel2.setText("Libelle :");
+
+        jtxtLibelle.setMaximumSize(new java.awt.Dimension(15, 15));
+        jtxtLibelle.setMinimumSize(new java.awt.Dimension(1, 15));
+        jtxtLibelle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtLibelleActionPerformed(evt);
+            }
+        });
+
+        jtxtId.setEditable(false);
+        jtxtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtIdActionPerformed(evt);
+            }
+        });
+
+        jbModifier.setText("MODIFIER");
+        jbModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModifierActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(jbtnAjoutTChambre)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(187, 187, 187)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtxtLibelle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jbModifier)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
-                .addComponent(jbtnAjoutTChambre)
-                .addGap(103, 103, 103))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(147, 147, 147))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jtxtLibelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addComponent(jbModifier)
+                        .addGap(39, 39, 39))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtxtLibelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtLibelleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtLibelleActionPerformed
+
+    private void jtxtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtIdActionPerformed
+
+    private void jTableChambreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableChambreMouseClicked
+        // TODO add your handling code here:
+        String sQuery;
+        
+        int Id = jTableChambre.getSelectedRow();
+        //System.out.println(Id);
+        Object sId = jTableChambre.getValueAt(Id, 0);
+        String EtabId = (String) sId;
+        if (EtabId != null)
+        {
+            sQuery = "From Typechambre Where TCh_ID = :etabId";
+            jfrMenu.getSession().beginTransaction();
+            Query q = jfrMenu.getSession().createQuery(sQuery);
+            
+            q.setString("etabId", EtabId);
+            
+            Typechambre unTChambre = (Typechambre) q.uniqueResult();
+            
+                String id = (String) unTChambre.getTchId();
+                System.out.println(id);
+                String libelle = (String) unTChambre.getTchLibelle();
+                System.out.println(id);
+                jtxtId.setText(id);
+                jtxtLibelle.setText(libelle);
+        }
+    }//GEN-LAST:event_jTableChambreMouseClicked
+
+    private void jbModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModifierActionPerformed
+        // TODO add your handling code here:
+        String sReq = "From Typechambre Where TCh_Id = ?";
+        Query q = jfrMenu.getSession().createQuery(sReq);
+        q.setParameter(0, jtxtId.getText());
+        Typechambre unTChambre = (Typechambre) q.uniqueResult();
+        unTChambre.setTchLibelle(jtxtLibelle.getText());
+        Transaction tx =jfrMenu.getSession().beginTransaction();
+        tx.commit();
+        JOptionPane.showMessageDialog(null, "Modification bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jbModifierActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbtnAjoutTChambre;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableChambre;
+    private javax.swing.JButton jbModifier;
+    private javax.swing.JTextField jtxtId;
+    private javax.swing.JTextField jtxtLibelle;
     // End of variables declaration//GEN-END:variables
 }
