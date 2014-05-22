@@ -273,20 +273,19 @@ public class jpConsulterEtab extends javax.swing.JPanel {
         String sQuery;
         
         int Id = TabEtab.getSelectedRow();
-        
+        //System.out.println(Id);
         Object sId = TabEtab.getValueAt(Id, 0);
         String EtabId = (String) sId;
         if (EtabId != null)
         {
-            sQuery = "From Etablissement Where etaId =?";
-            System.out.println(EtabId);
+            sQuery = "From Etablissement Where ETA_ID = :etabId";
             jfrMenu.getSession().beginTransaction();
             Query q = jfrMenu.getSession().createQuery(sQuery);
-            q.setParameter(0, EtabId);
-            Iterator etab = q.iterate();
-            while(etab.hasNext())
-            {
-                Etablissement unEtablissement = (Etablissement) etab.next();
+            
+            q.setString("etabId", EtabId);
+            
+            Etablissement unEtablissement = (Etablissement) q.uniqueResult();
+            
                 String id = (String) unEtablissement.getEtaId();
                 System.out.println(id);
                 String nom = (String) unEtablissement.getEtaNom();
@@ -317,7 +316,6 @@ public class jpConsulterEtab extends javax.swing.JPanel {
 //                jlCiviliteResp.setText(civilResp);
                 txtNomResp.setText(nomResp);
                 txtPrenomResp.setText(prenomResp);
-            }
         }
     }//GEN-LAST:event_TabEtabMouseClicked
 

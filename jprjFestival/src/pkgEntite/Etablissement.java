@@ -139,6 +139,11 @@ public class Etablissement  implements java.io.Serializable {
         this.offres = offres;
     }
 
+    @Override
+    public String toString() {
+        return "Etablissement{" + "etaId=" + etaId + ", etaNom=" + etaNom + ", etaRue=" + etaRue + ", etaCp=" + etaCp + ", etaVille=" + etaVille + ", etaTel=" + etaTel + ", etaMail=" + etaMail + ", etaType=" + etaType + ", etaCivilresp=" + etaCivilresp + ", etaNomresp=" + etaNomresp + ", etaPrenomresp=" + etaPrenomresp + '}';
+    }
+
 
 
 
