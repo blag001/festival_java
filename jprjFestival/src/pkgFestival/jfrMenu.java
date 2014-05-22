@@ -4,6 +4,7 @@
  */
 package pkgFestival;
 
+import pkgVues.jfAjoutTChambre;
 import org.hibernate.Session;
 import pkgEntite.HibernateUtil;
 import pkgVues.jpAjoutEtab;
