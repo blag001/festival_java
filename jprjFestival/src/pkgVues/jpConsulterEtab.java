@@ -288,6 +288,7 @@ public class jpConsulterEtab extends javax.swing.JPanel {
     private void TabEtabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabEtabMouseClicked
         // TODO add your handling code here:  
         String sQuery;
+       
         
         int Id = TabEtab.getSelectedRow();
         //System.out.println(Id);
@@ -323,7 +324,14 @@ public class jpConsulterEtab extends javax.swing.JPanel {
             System.out.println(nomResp);
             String prenomResp = (String) unEtablissement.getEtaPrenomresp();
             System.out.println(prenomResp);
-                
+            
+            if(unEtablissement.isEtaType() == true){
+                btnType.setSelected(true);
+            }
+            else{
+                btnType2.setSelected(true);
+            }
+            
             txtID.setText(id);
             txtNom.setText(nom);
             txtAdresse.setText(rue);
@@ -337,12 +345,17 @@ public class jpConsulterEtab extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_TabEtabMouseClicked
 
-    private void btnTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTypeActionPerformed
-
     private void btnModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifierActionPerformed
         // TODO add your handling code here:
+        boolean type;
+        
+        if(btnType.isSelected()){
+            type = true;
+        }
+        else{
+            type = false;
+        }
+        
         String id = (String) txtID.getText();
         String nom = (String) txtNom.getText();
         String rue = (String) txtAdresse.getText();
@@ -364,11 +377,18 @@ public class jpConsulterEtab extends javax.swing.JPanel {
         unEtablissement.setEtaVille(ville);
         unEtablissement.setEtaTel(tel);
         unEtablissement.setEtaMail(mail);
-//        unEtablissement.setEtaType(type);
+        unEtablissement.setEtaType(type);
         unEtablissement.setEtaCivilresp(civilResp);
         unEtablissement.setEtaNomresp(nomResp);
         unEtablissement.setEtaPrenomresp(prenomResp);
         
+         if(unEtablissement.isEtaType() == true){
+                btnType.setSelected(true);
+            }
+            else{
+                btnType2.setSelected(true);
+            }
+         
         Transaction tx = jfrMenu.getSession().beginTransaction();
         tx.commit();
         jfrMenu.getSession().update(unEtablissement);
@@ -405,6 +425,10 @@ public class jpConsulterEtab extends javax.swing.JPanel {
         
         tx.commit();
     }//GEN-LAST:event_btnSupprimerActionPerformed
+
+    private void btnTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTypeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TabEtab;

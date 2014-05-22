@@ -4,9 +4,7 @@
  */
 package pkgVues;
 
-import java.util.Iterator;
 import javax.swing.JOptionPane;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pkgEntite.Etablissement;
@@ -297,7 +295,6 @@ public class jpAjoutEtab extends javax.swing.JPanel
         txtMail.setText("");
         txtNomResp.setText("");
         txtPrenomResp.setText("");
-        
     }//GEN-LAST:event_btnValiderActionPerformed
 
     private void lstCiviliteRespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lstCiviliteRespActionPerformed
