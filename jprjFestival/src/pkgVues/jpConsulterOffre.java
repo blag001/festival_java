@@ -24,6 +24,7 @@ public class jpConsulterOffre extends javax.swing.JPanel {
 	 */
 	public jpConsulterOffre() {
 		initComponents();
+		chargerTable();
 	}
 	
     public void chargerTable() {
@@ -32,11 +33,13 @@ public class jpConsulterOffre extends javax.swing.JPanel {
 
             Query q = jfrMenu.getSession().createQuery(sReq);
             Iterator etab = q.iterate();
+			lstEtab.removeAllItems();
 
             while(etab.hasNext())
             {
                 Etablissement unEtablissement = (Etablissement) etab.next();
-                ((DefaultComboBoxModel) lstEtab.getModel()).addElement(new Object[] {unEtablissement.getEtaId(), unEtablissement.getEtaNom()});
+                 lstEtab.addItem(unEtablissement.getEtaNom());
+//				 System.out.println(unEtablissement.getEtaNom());
 						//addRow(new Object[] {unEtablissement.getEtaId(), unEtablissement.getEtaNom()});
             }
     }
