@@ -82,7 +82,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="lstCiviliteResp" pref="90" max="32767" attributes="0"/>
+                                      <Component id="lstCiviliteResp" pref="108" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jlNomResp" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -194,34 +194,34 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlID">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ID * :"/>
+        <Property name="text" type="java.lang.String" value="ID  :"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtID">
     </Component>
     <Component class="javax.swing.JLabel" name="jlNom">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nom* :"/>
+        <Property name="text" type="java.lang.String" value="Nom :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlAdresse">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Adresse* :"/>
+        <Property name="text" type="java.lang.String" value="Adresse :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlCP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Code Postal* :"/>
+        <Property name="text" type="java.lang.String" value="Code Postal :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlVille">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ville* :"/>
+        <Property name="text" type="java.lang.String" value="Ville :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlTel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="T&#xe9;l&#xe9;phone* :"/>
+        <Property name="text" type="java.lang.String" value="T&#xe9;l&#xe9;phone :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlMail">
@@ -231,7 +231,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlType">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Type* :"/>
+        <Property name="text" type="java.lang.String" value="Type :"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtNom">
@@ -272,7 +272,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlCiviliteResp">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Civilit&#xe9;* :"/>
+        <Property name="text" type="java.lang.String" value="Civilit&#xe9; :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="lstCiviliteResp">
@@ -287,12 +287,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlNomResp">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nom* :"/>
+        <Property name="text" type="java.lang.String" value="Nom :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlPrenomResp">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pr&#xe9;nom* :"/>
+        <Property name="text" type="java.lang.String" value="Pr&#xe9;nom :"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txtNomResp">
