@@ -60,9 +60,9 @@
                                                       <Component id="txtMail" min="-2" pref="200" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="btnType" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="btnType2" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -80,7 +80,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jlCiviliteResp" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lstCiviliteResp" min="-2" pref="96" max="-2" attributes="0"/>
+                                      <Component id="txtCivilResp" min="-2" pref="114" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -104,7 +104,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="93" max="-2" attributes="0"/>
-              <EmptySpace pref="93" max="32767" attributes="0"/>
+              <EmptySpace pref="90" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="txtID" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="jlID" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -151,20 +151,22 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnType2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jlResp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jlCiviliteResp" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lstCiviliteResp" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlNomResp" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jlCiviliteResp" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlNomResp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="txtCivilResp" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
@@ -173,7 +175,7 @@
                       <Component id="txtPrenomResp" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnModifier" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSupprimer" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -277,15 +279,18 @@
     </Component>
     <Component class="java.awt.TextField" name="txtMail">
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+    <Component class="javax.swing.JRadioButton" name="btnType">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grp_type"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Etablissement Scolaire"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTypeActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+    <Component class="javax.swing.JRadioButton" name="btnType2">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grp_type"/>
@@ -306,13 +311,6 @@
         <Property name="text" type="java.lang.String" value="Civilit&#xe9; :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="lstCiviliteResp">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jlNomResp">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nom :"/>
@@ -331,11 +329,19 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Modifier"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModifierActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSupprimer">
       <Properties>
         <Property name="text" type="java.lang.String" value="Supprimer"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSupprimerActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.TextField" name="txtCivilResp">
     </Component>
   </SubComponents>
 </Form>
