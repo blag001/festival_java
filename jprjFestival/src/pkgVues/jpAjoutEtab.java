@@ -282,37 +282,42 @@ public class jpAjoutEtab extends javax.swing.JPanel
                 JOptionPane.showMessageDialog(null, "Vous devez remplir le champ 'Prénom' dans la partie Responsable", "Attention", JOptionPane.WARNING_MESSAGE);
         }
         
-        //récupération de la valeur du bouton
-        if(btnType.isSelected()){
-            type = true;
+        try{
+            //récupération de la valeur du bouton
+            if(btnType.isSelected()){
+                type = true;
+            }
+            else{
+                type = false;
+            }
+
+            //récupération de la valeur de la liste déroulante
+            sCivilite = (String) lstCiviliteResp.getSelectedItem();
+
+            //ajout d'un établissement
+            Etablissement unNewEtablissement = new Etablissement();
+            unNewEtablissement.setEtaId(txtID.getText());
+            unNewEtablissement.setEtaNom(txtNom.getText());
+            unNewEtablissement.setEtaRue(txtAdresse.getText());
+            unNewEtablissement.setEtaCp(txtCP.getText());
+            unNewEtablissement.setEtaVille(txtVille.getText());
+            unNewEtablissement.setEtaTel(txtTel.getText());
+            unNewEtablissement.setEtaMail(txtMail.getText());
+            unNewEtablissement.setEtaType(type);
+            unNewEtablissement.setEtaCivilresp(sCivilite);
+            unNewEtablissement.setEtaNomresp(txtNomResp.getText());
+            unNewEtablissement.setEtaPrenomresp(txtPrenomResp.getText());
+
+            //ajout dans la base de données
+            Transaction tx = jfrMenu.getSession().beginTransaction();
+            jfrMenu.getSession().save(unNewEtablissement);
+            tx.commit();
+
+            JOptionPane.showMessageDialog(null, "Ajout bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
         }
-        else{
-            type = false;
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ajout impossible", "Information", JOptionPane.ERROR_MESSAGE);
         }
-        
-        //récupération de la valeur de la liste déroulante
-        sCivilite = (String) lstCiviliteResp.getSelectedItem();
-        
-        //ajout d'un établissement
-        Etablissement unNewEtablissement = new Etablissement();
-        unNewEtablissement.setEtaId(txtID.getText());
-        unNewEtablissement.setEtaNom(txtNom.getText());
-        unNewEtablissement.setEtaRue(txtAdresse.getText());
-        unNewEtablissement.setEtaCp(txtCP.getText());
-        unNewEtablissement.setEtaVille(txtVille.getText());
-        unNewEtablissement.setEtaTel(txtTel.getText());
-        unNewEtablissement.setEtaMail(txtMail.getText());
-        unNewEtablissement.setEtaType(type);
-        unNewEtablissement.setEtaCivilresp(sCivilite);
-        unNewEtablissement.setEtaNomresp(txtNomResp.getText());
-        unNewEtablissement.setEtaPrenomresp(txtPrenomResp.getText());
-        
-        //ajout dans la base de données
-        Transaction tx = jfrMenu.getSession().beginTransaction();
-        jfrMenu.getSession().save(unNewEtablissement);
-        tx.commit();
-        
-        JOptionPane.showMessageDialog(null, "Ajout bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
         
         //affichage du formulaire après l'ajout
         txtID.setText("");

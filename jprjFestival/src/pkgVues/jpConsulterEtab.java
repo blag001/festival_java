@@ -360,50 +360,55 @@ public class jpConsulterEtab extends javax.swing.JPanel {
             type = false;
         }
         
-        //récupération des données saisies
-        String id = (String) txtID.getText();
-        String nom = (String) txtNom.getText();
-        String rue = (String) txtAdresse.getText();
-        String cp = (String) txtCp.getText();
-        String ville = (String) txtVille.getText();
-        String tel = (String) txtTel.getText();
-        String mail = (String) txtMail.getText();
-        String civilResp = (String) txtCivilResp.getText();
-        String nomResp = (String) txtNomResp.getText();
-        String prenomResp = (String) txtPrenomResp.getText();
-        
-        //modification des données
-        String sReq = "From Etablissement Where ETA_ID =?";
-        Query q = jfrMenu.getSession().createQuery(sReq);
-        q.setParameter(0, id);
-        Etablissement unEtablissement = (Etablissement) q.uniqueResult();
-        unEtablissement.setEtaNom(nom);
-        unEtablissement.setEtaRue(rue);
-        unEtablissement.setEtaCp(cp);
-        unEtablissement.setEtaVille(ville);
-        unEtablissement.setEtaTel(tel);
-        unEtablissement.setEtaMail(mail);
-        unEtablissement.setEtaType(type);
-        unEtablissement.setEtaCivilresp(civilResp);
-        unEtablissement.setEtaNomresp(nomResp);
-        unEtablissement.setEtaPrenomresp(prenomResp);
-        
-        //mise à jour de la valeur du bouton
-         if(unEtablissement.isEtaType() == true)
-         {
-                btnType.setSelected(true);
-         }
-         else
-         {
-                btnType2.setSelected(true);
-         }
-         
-         //modification dans la base de données
-        Transaction tx = jfrMenu.getSession().beginTransaction();
-        jfrMenu.getSession().update(unEtablissement);
-        tx.commit();
-        
-        JOptionPane.showMessageDialog(null, "Modification bien effectuée !", "Information", JOptionPane.INFORMATION_MESSAGE);
+        try{
+            //récupération des données saisies
+            String id = (String) txtID.getText();
+            String nom = (String) txtNom.getText();
+            String rue = (String) txtAdresse.getText();
+            String cp = (String) txtCp.getText();
+            String ville = (String) txtVille.getText();
+            String tel = (String) txtTel.getText();
+            String mail = (String) txtMail.getText();
+            String civilResp = (String) txtCivilResp.getText();
+            String nomResp = (String) txtNomResp.getText();
+            String prenomResp = (String) txtPrenomResp.getText();
+
+            //modification des données
+            String sReq = "From Etablissement Where ETA_ID =?";
+            Query q = jfrMenu.getSession().createQuery(sReq);
+            q.setParameter(0, id);
+            Etablissement unEtablissement = (Etablissement) q.uniqueResult();
+            unEtablissement.setEtaNom(nom);
+            unEtablissement.setEtaRue(rue);
+            unEtablissement.setEtaCp(cp);
+            unEtablissement.setEtaVille(ville);
+            unEtablissement.setEtaTel(tel);
+            unEtablissement.setEtaMail(mail);
+            unEtablissement.setEtaType(type);
+            unEtablissement.setEtaCivilresp(civilResp);
+            unEtablissement.setEtaNomresp(nomResp);
+            unEtablissement.setEtaPrenomresp(prenomResp);
+
+            //mise à jour de la valeur du bouton
+             if(unEtablissement.isEtaType() == true)
+             {
+                    btnType.setSelected(true);
+             }
+             else
+             {
+                    btnType2.setSelected(true);
+             }
+
+             //modification dans la base de données
+            Transaction tx = jfrMenu.getSession().beginTransaction();
+            jfrMenu.getSession().update(unEtablissement);
+            tx.commit();
+
+            JOptionPane.showMessageDialog(null, "Modification bien effectuée !", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Modification impossible", "Information", JOptionPane.ERROR_MESSAGE);
+        }
         
         //recharger le tableau avec les données modifiées
         chargerTable();
@@ -417,18 +422,23 @@ public class jpConsulterEtab extends javax.swing.JPanel {
         {
             //récupération de l'ID de l'établissement selectionné
             String id = (String) txtID.getText();
-            String sReq = "From Etablissement Where ETA_ID =?";
+            try{
+                String sReq = "From Etablissement Where ETA_ID =?";
+                Query q = jfrMenu.getSession().createQuery(sReq);
+                q.setParameter(0, id);
+                Etablissement unEtablissement = (Etablissement) q.uniqueResult();
+                
+                //suppression dans la base de données
+                Transaction tx = jfrMenu.getSession().beginTransaction();
+                jfrMenu.getSession().delete(unEtablissement);
+                tx.commit();
+                
+                JOptionPane.showMessageDialog(null, "Suppression bien effectuée !", "Information", JOptionPane.INFORMATION_MESSAGE);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Suppression impossible", "Information", JOptionPane.ERROR_MESSAGE);
+            }
 
-            Query q = jfrMenu.getSession().createQuery(sReq);
-            q.setParameter(0, id);
-
-            Etablissement unEtablissement = (Etablissement) q.uniqueResult();
-            
-            //suppression dans la base de données
-            Transaction tx = jfrMenu.getSession().beginTransaction();
-            jfrMenu.getSession().delete(unEtablissement);
-            tx.commit();
-            
             //recharger le tableau après la suppression
             chargerTable();
 
