@@ -12,16 +12,18 @@ import org.hibernate.Transaction;
 import pkgEntite.HibernateUtil;
 import pkgEntite.Typechambre;
 import pkgFestival.jfrMenu;
+import pkgVues.jpListeChambre;
+
 /**
  *
  * @author etudSIO
  */
-public class jfAjoutTChambre extends javax.swing.JPanel {
-
+public class jpAjoutTChambre extends javax.swing.JPanel {
+protected jpListeChambre jpListeChambre = new jpListeChambre();
     /**
      * Creates new form jfAjoutTChambre
      */
-    public jfAjoutTChambre() {
+    public jpAjoutTChambre() {
         initComponents();
     }
     
@@ -72,12 +74,10 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(179, 179, 179)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jbtnRetour)
                             .addGroup(layout.createSequentialGroup()
@@ -85,12 +85,12 @@ public class jfAjoutTChambre extends javax.swing.JPanel {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jbtnAjouter)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jtxtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                                        .addComponent(jtxtLabelle, javax.swing.GroupLayout.Alignment.LEADING)))))))
-                .addContainerGap(104, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jbtnAjouter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtxtLabelle)
+                                    .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(21, 21, 21)))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
