@@ -1,17 +1,17 @@
 
 -- les dirigeants du collège de Moka et de l'Institution St-Malo Providence sont fictifs
 -- idem pour le prénom de Mme Lefort
-insert into Etablissement values ('0350785N', 'Collège de Moka', '2 avenue Aristide Briand BP 6', '35401', 'Saint-Malo', '0299206990', null,1,'Monsieur','Dupont','Alain');
-insert into Etablissement values ('0350773A', 'Collège Ste Jeanne d''Arc-Choisy', '3, avenue de la Borderie BP 32', '35404', 'Paramé', '0299560159', null, 1,'Madame','Lefort','Anne');  
-insert into Etablissement values ('0352072M', 'Institution Saint-Malo Providence', '2 rue du collège BP 31863', '35418', 'Saint-Malo', '0299407474', null, 1,'Monsieur','Durand','Pierre');   
-insert into Etablissement values ('11111111', 'Centre de rencontres internationales', '37 avenue du R.P. Umbricht BP 108', '35407', 'Saint-Malo', '0299000000', null, 0, 'Monsieur','Guenroc','Guy');
+insert into Etablissement values ('0350785N', 'Collège de Moka', '2 avenue Aristide Briand BP 6', '35401', 'Saint-Malo', '0299206990', null,1,'Monsieur','Dupont','Alain', 0, 0);
+insert into Etablissement values ('0350773A', 'Collège Ste Jeanne d''Arc-Choisy', '3, avenue de la Borderie BP 32', '35404', 'Paramé', '0299560159', null, 1,'Madame','Lefort','Anne', 0, 0);
+insert into Etablissement values ('0352072M', 'Institution Saint-Malo Providence', '2 rue du collège BP 31863', '35418', 'Saint-Malo', '0299407474', null, 1,'Monsieur','Durand','Pierre', 0, 0);
+insert into Etablissement values ('11111111', 'Centre de rencontres internationales', '37 avenue du R.P. Umbricht BP 108', '35407', 'Saint-Malo', '0299000000', null, 0, 'Monsieur','Guenroc','Guy', 0, 0);
 
 insert into TypeChambre values ('C1', '1 lit');
 insert into TypeChambre values ('C2', '2 à 3 lits');
 insert into TypeChambre values ('C3', '4 à 5 lits');
 insert into TypeChambre values ('C4', '6 à 8 lits');
 insert into TypeChambre values ('C5', '8 à 12 lits');
- 
+
 -- certains groupes sont incomplètement renseignés
 insert into Groupe (Gp_Id, Gp_Nom, Gp_NbPers, Gp_NomPays, Gp_Hebergement) values ('g001','Groupe folklorique du Bachkortostan',40,'Bachkirie','O');
 insert into Groupe (Gp_Id, Gp_Nom, Gp_NbPers, Gp_NomPays, Gp_Hebergement) values ('g002','Marina Prudencio Chavez',25,'Bolivie','O');
@@ -59,16 +59,16 @@ insert into Groupe (Gp_Id,Gp_Nom, Gp_NbPers, Gp_NomPays, Gp_Hebergement) values 
 insert into Groupe (Gp_Id,Gp_Nom, Gp_NbPers, Gp_NomPays, Gp_Hebergement) values ('g044','Kan Tri',0,'France - Bretagne','N');
 
 -- les offres sont fictives
-insert into Offre values ('0350785N', 'C1', 5);
-insert into Offre values ('0350785N', 'C2', 10);
-insert into Offre values ('0350785N', 'C3', 5);
+insert into Offre values ('0350785N', 'C1', 1, 5);
+insert into Offre values ('0350785N', 'C2', 2, 10);
+insert into Offre values ('0350785N', 'C3', 3, 5);
 
-insert into Offre values ('0350773A', 'C2', 15);
-insert into Offre values ('0350773A', 'C3', 1);
+insert into Offre values ('0350773A', 'C2', 2, 15);
+insert into Offre values ('0350773A', 'C3', 3, 1);
 
-insert into Offre values ('0352072M', 'C1', 5);
-insert into Offre values ('0352072M', 'C2', 10);
-insert into Offre values ('0352072M', 'C3', 3);
+insert into Offre values ('0352072M', 'C1', 1, 5);
+insert into Offre values ('0352072M', 'C2', 2, 10);
+insert into Offre values ('0352072M', 'C3', 3, 3);
 
 -- les attributions sont fictives
 insert into Attribution values ('0350785N', 'C1', 'g001', 1);
@@ -88,5 +88,5 @@ insert into Attribution values ('0352072M', 'C3', 'g006', 3);
 
 
 
- 
+
 

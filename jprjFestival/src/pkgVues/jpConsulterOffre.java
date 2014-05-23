@@ -7,10 +7,10 @@
 package pkgVues;
 
 import java.util.Iterator;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.Query;
 import pkgEntite.Etablissement;
+import pkgEntite.Offre;
 import pkgFestival.jfrMenu;
 
 /**
@@ -29,18 +29,18 @@ public class jpConsulterOffre extends javax.swing.JPanel {
 	
     public void chargerTable() {
         //On charge la liste des établissements
-            String sReq = "From Etablissement";
+            String sReq = "FROM Etablissement";
 
+            jfrMenu.getSession().beginTransaction();
             Query q = jfrMenu.getSession().createQuery(sReq);
             Iterator etab = q.iterate();
-			lstEtab.removeAllItems();
+            lstEtab.removeAllItems();
+            lstEtab.addItem("");
 
             while(etab.hasNext())
             {
                 Etablissement unEtablissement = (Etablissement) etab.next();
                  lstEtab.addItem(unEtablissement.getEtaNom());
-//				 System.out.println(unEtablissement.getEtaNom());
-						//addRow(new Object[] {unEtablissement.getEtaId(), unEtablissement.getEtaNom()});
             }
     }
 	/**
@@ -53,6 +53,35 @@ public class jpConsulterOffre extends javax.swing.JPanel {
     private void initComponents() {
 
         lstEtab = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabOffres = new javax.swing.JTable();
+
+        lstEtab.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                lstEtabItemStateChanged(evt);
+            }
+        });
+
+        tabOffres.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Type", "Capacité", "Nombre de chambre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabOffres);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,18 +91,67 @@ public class jpConsulterOffre extends javax.swing.JPanel {
                 .addGap(118, 118, 118)
                 .addComponent(lstEtab, 0, 144, Short.MAX_VALUE)
                 .addGap(138, 138, 138))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lstEtab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lstEtabItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lstEtabItemStateChanged
+
+        // on vide le tableau
+        int nbligne = tabOffres.getRowCount();
+        if(nbligne > 0){
+            for(int i=0; i < nbligne; i++){
+                ((DefaultTableModel)tabOffres.getModel()).removeRow(0);
+            }
+        }
+        
+        if(!lstEtab.getSelectedItem().toString().equals(""))
+        {
+            // on charge l'id de l'etablissement
+            String sReqEtab = "FROM Etablissement WHERE Eta_Nom = :etabNom";
+
+            Query qEtab = jfrMenu.getSession().createQuery(sReqEtab);
+            qEtab.setString("etabNom", lstEtab.getSelectedItem().toString());
+            System.out.println(qEtab.uniqueResult()); 
+            Etablissement unEtablissement = (Etablissement) qEtab.uniqueResult();
+
+            // on charge les offres
+            String sReqOffre = "FROM Offre WHERE Off_Etablissement = :etabId";
+
+            Query qOffre = jfrMenu.getSession().createQuery(sReqOffre);
+            qOffre.setString("etabId", unEtablissement.getEtaId());
+
+            Iterator offres = qOffre.iterate();
+
+            while(offres.hasNext()){
+                Offre uneOffre = (Offre) offres.next();
+                ((DefaultTableModel) tabOffres.getModel()).addRow(new Object[] {
+                    //uneOffre.getOffTypechambre(),
+                    uneOffre.getTypechambre().getTchLibelle(),
+                    "test",//uneOffre.get(),
+                    uneOffre.getOffNbchambres()
+                });
+            }
+        }
+			
+    }//GEN-LAST:event_lstEtabItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox lstEtab;
+    private javax.swing.JTable tabOffres;
     // End of variables declaration//GEN-END:variables
 }
