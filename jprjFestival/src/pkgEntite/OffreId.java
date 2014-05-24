@@ -1,5 +1,5 @@
 package pkgEntite;
-// Generated 27 mars 2014 17:38:41 by Hibernate Tools 3.2.1.GA
+// Generated 24 mai 2014 02:06:50 by Hibernate Tools 3.6.0
 
 
 

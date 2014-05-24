@@ -1,5 +1,5 @@
 package pkgEntite;
-// Generated 27 mars 2014 17:38:41 by Hibernate Tools 3.2.1.GA
+// Generated 24 mai 2014 02:06:50 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -22,6 +22,8 @@ public class Etablissement  implements java.io.Serializable {
      private String etaCivilresp;
      private String etaNomresp;
      private String etaPrenomresp;
+     private Short etaNbtotpers;
+     private Short etaNbchdispo;
      private Set offres = new HashSet(0);
 
     public Etablissement() {
@@ -39,7 +41,7 @@ public class Etablissement  implements java.io.Serializable {
         this.etaCivilresp = etaCivilresp;
         this.etaNomresp = etaNomresp;
     }
-    public Etablissement(String etaId, String etaNom, String etaRue, String etaCp, String etaVille, String etaTel, String etaMail, boolean etaType, String etaCivilresp, String etaNomresp, String etaPrenomresp, Set offres) {
+    public Etablissement(String etaId, String etaNom, String etaRue, String etaCp, String etaVille, String etaTel, String etaMail, boolean etaType, String etaCivilresp, String etaNomresp, String etaPrenomresp, Short etaNbtotpers, Short etaNbchdispo, Set offres) {
        this.etaId = etaId;
        this.etaNom = etaNom;
        this.etaRue = etaRue;
@@ -51,6 +53,8 @@ public class Etablissement  implements java.io.Serializable {
        this.etaCivilresp = etaCivilresp;
        this.etaNomresp = etaNomresp;
        this.etaPrenomresp = etaPrenomresp;
+       this.etaNbtotpers = etaNbtotpers;
+       this.etaNbchdispo = etaNbchdispo;
        this.offres = offres;
     }
    
@@ -131,17 +135,26 @@ public class Etablissement  implements java.io.Serializable {
     public void setEtaPrenomresp(String etaPrenomresp) {
         this.etaPrenomresp = etaPrenomresp;
     }
+    public Short getEtaNbtotpers() {
+        return this.etaNbtotpers;
+    }
+    
+    public void setEtaNbtotpers(Short etaNbtotpers) {
+        this.etaNbtotpers = etaNbtotpers;
+    }
+    public Short getEtaNbchdispo() {
+        return this.etaNbchdispo;
+    }
+    
+    public void setEtaNbchdispo(Short etaNbchdispo) {
+        this.etaNbchdispo = etaNbchdispo;
+    }
     public Set getOffres() {
         return this.offres;
     }
     
     public void setOffres(Set offres) {
         this.offres = offres;
-    }
-
-    @Override
-    public String toString() {
-        return "Etablissement{" + "etaId=" + etaId + ", etaNom=" + etaNom + ", etaRue=" + etaRue + ", etaCp=" + etaCp + ", etaVille=" + etaVille + ", etaTel=" + etaTel + ", etaMail=" + etaMail + ", etaType=" + etaType + ", etaCivilresp=" + etaCivilresp + ", etaNomresp=" + etaNomresp + ", etaPrenomresp=" + etaPrenomresp + '}';
     }
 
 

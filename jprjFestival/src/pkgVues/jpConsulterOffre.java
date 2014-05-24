@@ -140,7 +140,7 @@ public class jpConsulterOffre extends javax.swing.JPanel {
                 ((DefaultTableModel) tabOffres.getModel()).addRow(new Object[] {
                     //uneOffre.getOffTypechambre(),
                     uneOffre.getTypechambre().getTchLibelle(),
-                    "test",//uneOffre.get(),
+                    uneOffre.getOffCapacite(),
                     uneOffre.getOffNbchambres()
                 });
             }

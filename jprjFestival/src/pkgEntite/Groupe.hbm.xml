@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 27 mars 2014 17:38:41 by Hibernate Tools 3.2.1.GA -->
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24 mai 2014 02:06:53 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="pkgEntite.Groupe" table="GROUPE" schema="FESTIVAL10">
         <id name="gpId" type="string">
@@ -26,7 +26,7 @@
         <property name="gpHebergement" type="char">
             <column name="GP_HEBERGEMENT" length="1" not-null="true" />
         </property>
-        <set name="attributions" inverse="true">
+        <set name="attributions" table="ATTRIBUTION" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ATT_GROUPE" length="4" not-null="true" />
             </key>

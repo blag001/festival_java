@@ -1,5 +1,5 @@
 package pkgEntite;
-// Generated 27 mars 2014 17:38:41 by Hibernate Tools 3.2.1.GA
+// Generated 24 mai 2014 02:06:50 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -14,6 +14,7 @@ public class Offre  implements java.io.Serializable {
      private OffreId id;
      private Typechambre typechambre;
      private Etablissement etablissement;
+     private byte offCapacite;
      private byte offNbchambres;
      private Set attributions = new HashSet(0);
 
@@ -21,16 +22,18 @@ public class Offre  implements java.io.Serializable {
     }
 
 	
-    public Offre(OffreId id, Typechambre typechambre, Etablissement etablissement, byte offNbchambres) {
+    public Offre(OffreId id, Typechambre typechambre, Etablissement etablissement, byte offCapacite, byte offNbchambres) {
         this.id = id;
         this.typechambre = typechambre;
         this.etablissement = etablissement;
+        this.offCapacite = offCapacite;
         this.offNbchambres = offNbchambres;
     }
-    public Offre(OffreId id, Typechambre typechambre, Etablissement etablissement, byte offNbchambres, Set attributions) {
+    public Offre(OffreId id, Typechambre typechambre, Etablissement etablissement, byte offCapacite, byte offNbchambres, Set attributions) {
        this.id = id;
        this.typechambre = typechambre;
        this.etablissement = etablissement;
+       this.offCapacite = offCapacite;
        this.offNbchambres = offNbchambres;
        this.attributions = attributions;
     }
@@ -55,6 +58,13 @@ public class Offre  implements java.io.Serializable {
     
     public void setEtablissement(Etablissement etablissement) {
         this.etablissement = etablissement;
+    }
+    public byte getOffCapacite() {
+        return this.offCapacite;
+    }
+    
+    public void setOffCapacite(byte offCapacite) {
+        this.offCapacite = offCapacite;
     }
     public byte getOffNbchambres() {
         return this.offNbchambres;
