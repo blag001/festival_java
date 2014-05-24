@@ -7,10 +7,13 @@
 package pkgVues;
 
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import pkgEntite.Etablissement;
 import pkgEntite.Offre;
+import pkgEntite.Typechambre;
 import pkgFestival.jfrMenu;
 
 /**
@@ -28,20 +31,25 @@ public class jpConsulterOffre extends javax.swing.JPanel {
 	}
 	
     public void chargerTable() {
-        //On charge la liste des établissements
+        lstEtab.removeAllItems();
+        lstEtab.addItem("");
+        try{
+            //On charge la liste des établissements
             String sReq = "FROM Etablissement";
 
             jfrMenu.getSession().beginTransaction();
             Query q = jfrMenu.getSession().createQuery(sReq);
             Iterator etab = q.iterate();
-            lstEtab.removeAllItems();
-            lstEtab.addItem("");
 
             while(etab.hasNext())
             {
                 Etablissement unEtablissement = (Etablissement) etab.next();
                  lstEtab.addItem(unEtablissement.getEtaNom());
             }
+        }
+        catch(HibernateException e){
+            JOptionPane.showMessageDialog(null, "Impossible de charger les établissements !", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
     }
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -55,6 +63,10 @@ public class jpConsulterOffre extends javax.swing.JPanel {
         lstEtab = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabOffres = new javax.swing.JTable();
+        lstType = new javax.swing.JComboBox();
+        txtNbChamb = new javax.swing.JTextField();
+        jbtRemove = new javax.swing.JButton();
+        jbtSubmit = new javax.swing.JButton();
 
         lstEtab.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -64,24 +76,40 @@ public class jpConsulterOffre extends javax.swing.JPanel {
 
         tabOffres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Type", "Capacité", "Nombre de chambre"
+                "Id Type", "Type", "Capacité", "Nombre de chambre"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabOffres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabOffresMouseClicked(evt);
+            }
         });
         jScrollPane1.setViewportView(tabOffres);
+
+        jbtRemove.setText("Supprimer");
+
+        jbtSubmit.setText("Modifier");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -92,8 +120,19 @@ public class jpConsulterOffre extends javax.swing.JPanel {
                 .addComponent(lstEtab, 0, 144, Short.MAX_VALUE)
                 .addGap(138, 138, 138))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbtRemove)
+                                .addGap(90, 90, 90)
+                                .addComponent(jbtSubmit))
+                            .addComponent(txtNbChamb)
+                            .addComponent(lstType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,8 +141,16 @@ public class jpConsulterOffre extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lstEtab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lstType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtNbChamb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtRemove)
+                    .addComponent(jbtSubmit))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -119,39 +166,124 @@ public class jpConsulterOffre extends javax.swing.JPanel {
         
         if(!lstEtab.getSelectedItem().toString().equals(""))
         {
-            // on charge l'id de l'etablissement
-            String sReqEtab = "FROM Etablissement WHERE Eta_Nom = :etabNom";
+            try{
+                // on charge l'id de l'etablissement
+                String sReqEtab = "FROM Etablissement WHERE Eta_Nom = :etabNom";
 
-            Query qEtab = jfrMenu.getSession().createQuery(sReqEtab);
-            qEtab.setString("etabNom", lstEtab.getSelectedItem().toString());
-            System.out.println(qEtab.uniqueResult()); 
-            Etablissement unEtablissement = (Etablissement) qEtab.uniqueResult();
+                Query qEtab = jfrMenu.getSession().createQuery(sReqEtab);
+                qEtab.setString("etabNom", lstEtab.getSelectedItem().toString());
+                //System.out.println(qEtab.uniqueResult()); 
+                Etablissement unEtablissement = (Etablissement) qEtab.uniqueResult();
+                
+                // on charge les offres
+                String sReqOffre = "FROM Offre WHERE Off_Etablissement = :etabId";
 
-            // on charge les offres
-            String sReqOffre = "FROM Offre WHERE Off_Etablissement = :etabId";
+                Query qOffre = jfrMenu.getSession().createQuery(sReqOffre);
+                qOffre.setString("etabId", unEtablissement.getEtaId());
 
-            Query qOffre = jfrMenu.getSession().createQuery(sReqOffre);
-            qOffre.setString("etabId", unEtablissement.getEtaId());
+                Iterator offres = qOffre.iterate();
 
-            Iterator offres = qOffre.iterate();
-
-            while(offres.hasNext()){
-                Offre uneOffre = (Offre) offres.next();
-                ((DefaultTableModel) tabOffres.getModel()).addRow(new Object[] {
-                    //uneOffre.getOffTypechambre(),
-                    uneOffre.getTypechambre().getTchLibelle(),
-                    uneOffre.getOffCapacite(),
-                    uneOffre.getOffNbchambres()
-                });
+                while(offres.hasNext()){
+                    Offre uneOffre = (Offre) offres.next();
+                    ((DefaultTableModel) tabOffres.getModel()).addRow(new Object[] {
+                        uneOffre.getTypechambre().getTchId(),
+                        uneOffre.getTypechambre().getTchLibelle(),
+                        uneOffre.getOffCapacite(),
+                        uneOffre.getOffNbchambres()
+                    });
+                }
+            }
+            catch(HibernateException e){
+                JOptionPane.showMessageDialog(null, "Impossible de charger l'établissement !", "Erreur", JOptionPane.ERROR_MESSAGE);
+                
             }
         }
 			
     }//GEN-LAST:event_lstEtabItemStateChanged
 
+    private void tabOffresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabOffresMouseClicked
+        //selection de l'ID d'une ligne
+        int line = tabOffres.getSelectedRow();
+
+        String etabId = tabOffres.getValueAt(line, 0).toString();
+        
+        if (etabId != null)
+        {
+            // on charge la liste des type de chambre
+            String sReqTypeChamb = "FROM Typechambre";
+            Query qTypeChamb = jfrMenu.getSession().createQuery(sReqTypeChamb);
+            
+            lstType.removeAllItems();
+
+            Iterator iTypeChamb = qTypeChamb.iterate();
+
+            while(iTypeChamb.hasNext())
+            {
+                Typechambre unTypeChamb = (Typechambre) iTypeChamb.next();
+                 lstType.addItem(unTypeChamb.getTchId());
+            }
+            
+            //récupération des données liées à l'ID selectioné
+            String sReqEtab = "From Etablissement Where Eta_Id = :etabId";
+            
+            Query qEtab = jfrMenu.getSession().createQuery(sReqEtab);
+            qEtab.setString("etabId", etabId);
+            //System.out.println(qEtab.uniqueResult()); 
+            Etablissement unEtablissement = (Etablissement) qEtab.uniqueResult();
+            
+            lstType.setSelectedItem(etabId);
+            
+            
+//            
+//            String id = (String) unEtablissement.getEtaId();
+//            System.out.println(id);
+//            String nom = (String) unEtablissement.getEtaNom();
+//            System.out.println(nom);
+//            String rue = (String) unEtablissement.getEtaRue();
+//            System.out.println(rue);
+//            String cp = (String) unEtablissement.getEtaCp();
+//            System.out.println(cp);
+//            String ville = (String) unEtablissement.getEtaVille();
+//            System.out.println(ville);
+//            String tel = (String) unEtablissement.getEtaTel();
+//            System.out.println(tel);
+//            String mail = (String) unEtablissement.getEtaMail();
+//            System.out.println(mail);
+//            String civilResp = (String) unEtablissement.getEtaCivilresp();
+//            System.out.println(civilResp);
+//            String nomResp = (String) unEtablissement.getEtaNomresp();
+//            System.out.println(nomResp);
+//            String prenomResp = (String) unEtablissement.getEtaPrenomresp();
+//            System.out.println(prenomResp);
+//            
+//            if(unEtablissement.isEtaType() == true){
+//                btnType.setSelected(true);
+//            }
+//            else{
+//                btnType2.setSelected(true);
+//            }
+//            
+//            txtID.setText(id);
+//            txtNom.setText(nom);
+//            txtAdresse.setText(rue);
+//            txtCp.setText(cp);
+//            txtVille.setText(ville);
+//            txtTel.setText(tel);
+//            txtMail.setText(mail);
+//            txtCivilResp.setText(civilResp);
+//            txtNomResp.setText(nomResp);
+//            txtPrenomResp.setText(prenomResp);
+        }
+    }//GEN-LAST:event_tabOffresMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtRemove;
+    private javax.swing.JButton jbtSubmit;
     private javax.swing.JComboBox lstEtab;
+    private javax.swing.JComboBox lstType;
     private javax.swing.JTable tabOffres;
+    private javax.swing.JTextField txtNbChamb;
     // End of variables declaration//GEN-END:variables
 }
