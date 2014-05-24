@@ -96,7 +96,15 @@ public class jpConsulterEtab extends javax.swing.JPanel {
             new String [] {
                 "Code", "Etablissement"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         TabEtab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TabEtabMouseClicked(evt);
