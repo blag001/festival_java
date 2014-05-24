@@ -4,9 +4,7 @@
  */
 package pkgVues;
 
-import java.util.Iterator;
 import javax.swing.JOptionPane;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pkgEntite.Etablissement;
@@ -82,21 +80,21 @@ public class jpAjoutEtab extends javax.swing.JPanel
         jlTitre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jlTitre.setText("Nouvel Etablissement");
 
-        jlID.setText("ID * :");
+        jlID.setText("ID  :");
 
-        jlNom.setText("Nom* :");
+        jlNom.setText("Nom :");
 
-        jlAdresse.setText("Adresse* :");
+        jlAdresse.setText("Adresse :");
 
-        jlCP.setText("Code Postal* :");
+        jlCP.setText("Code Postal :");
 
-        jlVille.setText("Ville* :");
+        jlVille.setText("Ville :");
 
-        jlTel.setText("Téléphone* :");
+        jlTel.setText("Téléphone :");
 
         jlMail.setText("Mail :");
 
-        jlType.setText("Type* :");
+        jlType.setText("Type :");
 
         grp_type.add(btnType);
         btnType.setText("Etablissement Scolaire");
@@ -107,7 +105,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
         jlResponsable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlResponsable.setText("Responsable");
 
-        jlCiviliteResp.setText("Civilité* :");
+        jlCiviliteResp.setText("Civilité :");
 
         lstCiviliteResp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,9 +113,9 @@ public class jpAjoutEtab extends javax.swing.JPanel
             }
         });
 
-        jlNomResp.setText("Nom* :");
+        jlNomResp.setText("Nom :");
 
-        jlPrenomResp.setText("Prénom* :");
+        jlPrenomResp.setText("Prénom :");
 
         btnValider.setText("Valider");
         btnValider.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +176,7 @@ public class jpAjoutEtab extends javax.swing.JPanel
                                         .addComponent(btnAnnuler))
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lstCiviliteResp, 0, 90, Short.MAX_VALUE)
+                                        .addComponent(lstCiviliteResp, 0, 108, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jlNomResp)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -260,34 +258,68 @@ public class jpAjoutEtab extends javax.swing.JPanel
         // TODO add your handling code here:
         String sCivilite;
         boolean type;
-        if(btnType.isSelected()){
-            type = true;
+        
+        //contrôle de saisie
+        if (txtNom.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Vous devez remplir le champ 'Nom'", "Attention", JOptionPane.WARNING_MESSAGE);
         }
-        else{
-            type = false;
+        if (txtAdresse.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Vous devez remplir le champ 'Rue'", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
+        if (txtCP.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Vous devez remplir le champ 'Code Postal'", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
+        if (txtVille.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Vous devez remplir le champ 'Ville'", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
+        if (txtTel.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Vous devez remplir le champ 'Téléphone'", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
+        if (txtNomResp.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Vous devez remplir le champ 'Nom' dans la partie Responsable", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
+        if (txtPrenomResp.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Vous devez remplir le champ 'Prénom' dans la partie Responsable", "Attention", JOptionPane.WARNING_MESSAGE);
         }
         
-        sCivilite = (String) lstCiviliteResp.getSelectedItem();
+        try{
+            //récupération de la valeur du bouton
+            if(btnType.isSelected()){
+                type = true;
+            }
+            else{
+                type = false;
+            }
+
+            //récupération de la valeur de la liste déroulante
+            sCivilite = (String) lstCiviliteResp.getSelectedItem();
+
+            //ajout d'un établissement
+            Etablissement unNewEtablissement = new Etablissement();
+            unNewEtablissement.setEtaId(txtID.getText());
+            unNewEtablissement.setEtaNom(txtNom.getText());
+            unNewEtablissement.setEtaRue(txtAdresse.getText());
+            unNewEtablissement.setEtaCp(txtCP.getText());
+            unNewEtablissement.setEtaVille(txtVille.getText());
+            unNewEtablissement.setEtaTel(txtTel.getText());
+            unNewEtablissement.setEtaMail(txtMail.getText());
+            unNewEtablissement.setEtaType(type);
+            unNewEtablissement.setEtaCivilresp(sCivilite);
+            unNewEtablissement.setEtaNomresp(txtNomResp.getText());
+            unNewEtablissement.setEtaPrenomresp(txtPrenomResp.getText());
+
+            //ajout dans la base de données
+            Transaction tx = jfrMenu.getSession().beginTransaction();
+            jfrMenu.getSession().save(unNewEtablissement);
+            tx.commit();
+
+            JOptionPane.showMessageDialog(null, "Ajout bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ajout impossible", "Information", JOptionPane.ERROR_MESSAGE);
+        }
         
-        Etablissement unNewEtablissement = new Etablissement();
-        unNewEtablissement.setEtaId(txtID.getText());
-        unNewEtablissement.setEtaNom(txtNom.getText());
-        unNewEtablissement.setEtaRue(txtAdresse.getText());
-        unNewEtablissement.setEtaCp(txtCP.getText());
-        unNewEtablissement.setEtaVille(txtVille.getText());
-        unNewEtablissement.setEtaTel(txtTel.getText());
-        unNewEtablissement.setEtaMail(txtMail.getText());
-        unNewEtablissement.setEtaType(type);
-        unNewEtablissement.setEtaCivilresp(sCivilite);
-        unNewEtablissement.setEtaNomresp(txtNomResp.getText());
-        unNewEtablissement.setEtaPrenomresp(txtPrenomResp.getText());
-        
-        Transaction tx = jfrMenu.getSession().beginTransaction();
-        jfrMenu.getSession().save(unNewEtablissement);
-        tx.commit();
-        
-        JOptionPane.showMessageDialog(null, "Ajout bien effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
-        
+        //affichage du formulaire après l'ajout
         txtID.setText("");
         txtNom.setText("");
         txtAdresse.setText("");
@@ -297,7 +329,6 @@ public class jpAjoutEtab extends javax.swing.JPanel
         txtMail.setText("");
         txtNomResp.setText("");
         txtPrenomResp.setText("");
-        
     }//GEN-LAST:event_btnValiderActionPerformed
 
     private void lstCiviliteRespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lstCiviliteRespActionPerformed
@@ -306,18 +337,8 @@ public class jpAjoutEtab extends javax.swing.JPanel
     }//GEN-LAST:event_lstCiviliteRespActionPerformed
     private void chargerCivilite()
     {
-//            String sReq = "from Etablissement";
-//            jfrMenu.getSession().beginTransaction();
-//            Query q = jfrMenu.getSession().createQuery(sReq);
-
-//            Iterator civilite = q.iterate();
-//            while (civilite.hasNext()){
-//                Etablissement uneCivilite = (Etablissement)civilite.next();
-//                lstCiviliteResp.addItem(uneCivilite.getEtaCivilresp());
-//            }
-                lstCiviliteResp.addItem("Monsieur");
-                lstCiviliteResp.addItem("Madame");
-            //bCharge = true;
+        lstCiviliteResp.addItem("Monsieur");
+        lstCiviliteResp.addItem("Madame");
      } 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnnuler;

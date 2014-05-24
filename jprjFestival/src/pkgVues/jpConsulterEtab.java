@@ -5,6 +5,7 @@
 package pkgVues;
 
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
@@ -289,18 +290,21 @@ public class jpConsulterEtab extends javax.swing.JPanel {
         // TODO add your handling code here:  
         String sQuery;
         
+        //selection de l'ID d'une ligne
         int Id = TabEtab.getSelectedRow();
-        //System.out.println(Id);
+
         Object sId = TabEtab.getValueAt(Id, 0);
         String EtabId = (String) sId;
         if (EtabId != null)
         {
+            //récupération des données liées à l'ID selectioné
             sQuery = "From Etablissement Where ETA_ID = :etabId";
             jfrMenu.getSession().beginTransaction();
             Query q = jfrMenu.getSession().createQuery(sQuery);
             
             q.setString("etabId", EtabId);
             
+            //affichage des données liées à l'ID 
             Etablissement unEtablissement = (Etablissement) q.uniqueResult();
             
             String id = (String) unEtablissement.getEtaId();
@@ -323,7 +327,14 @@ public class jpConsulterEtab extends javax.swing.JPanel {
             System.out.println(nomResp);
             String prenomResp = (String) unEtablissement.getEtaPrenomresp();
             System.out.println(prenomResp);
-                
+            
+            if(unEtablissement.isEtaType() == true){
+                btnType.setSelected(true);
+            }
+            else{
+                btnType2.setSelected(true);
+            }
+            
             txtID.setText(id);
             txtNom.setText(nom);
             txtAdresse.setText(rue);
@@ -337,74 +348,116 @@ public class jpConsulterEtab extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_TabEtabMouseClicked
 
-    private void btnTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTypeActionPerformed
-
     private void btnModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifierActionPerformed
         // TODO add your handling code here:
-        String id = (String) txtID.getText();
-        String nom = (String) txtNom.getText();
-        String rue = (String) txtAdresse.getText();
-        String cp = (String) txtCp.getText();
-        String ville = (String) txtVille.getText();
-        String tel = (String) txtTel.getText();
-        String mail = (String) txtMail.getText();
-        String civilResp = (String) txtCivilResp.getText();
-        String nomResp = (String) txtNomResp.getText();
-        String prenomResp = (String) txtPrenomResp.getText();
+        boolean type;
         
-        String sReq = "From Etablissement Where ETA_ID =?";
-        Query q = jfrMenu.getSession().createQuery(sReq);
-        q.setParameter(0, id);
-        Etablissement unEtablissement = (Etablissement) q.uniqueResult();
-        unEtablissement.setEtaNom(nom);
-        unEtablissement.setEtaRue(rue);
-        unEtablissement.setEtaCp(cp);
-        unEtablissement.setEtaVille(ville);
-        unEtablissement.setEtaTel(tel);
-        unEtablissement.setEtaMail(mail);
-//        unEtablissement.setEtaType(type);
-        unEtablissement.setEtaCivilresp(civilResp);
-        unEtablissement.setEtaNomresp(nomResp);
-        unEtablissement.setEtaPrenomresp(prenomResp);
+        //récupération de la valeur du bouton 
+        if(btnType.isSelected()){
+            type = true;
+        }
+        else{
+            type = false;
+        }
         
-        Transaction tx = jfrMenu.getSession().beginTransaction();
-        tx.commit();
-        jfrMenu.getSession().update(unEtablissement);
+        try{
+            //récupération des données saisies
+            String id = (String) txtID.getText();
+            String nom = (String) txtNom.getText();
+            String rue = (String) txtAdresse.getText();
+            String cp = (String) txtCp.getText();
+            String ville = (String) txtVille.getText();
+            String tel = (String) txtTel.getText();
+            String mail = (String) txtMail.getText();
+            String civilResp = (String) txtCivilResp.getText();
+            String nomResp = (String) txtNomResp.getText();
+            String prenomResp = (String) txtPrenomResp.getText();
+
+            //modification des données
+            String sReq = "From Etablissement Where ETA_ID =?";
+            Query q = jfrMenu.getSession().createQuery(sReq);
+            q.setParameter(0, id);
+            Etablissement unEtablissement = (Etablissement) q.uniqueResult();
+            unEtablissement.setEtaNom(nom);
+            unEtablissement.setEtaRue(rue);
+            unEtablissement.setEtaCp(cp);
+            unEtablissement.setEtaVille(ville);
+            unEtablissement.setEtaTel(tel);
+            unEtablissement.setEtaMail(mail);
+            unEtablissement.setEtaType(type);
+            unEtablissement.setEtaCivilresp(civilResp);
+            unEtablissement.setEtaNomresp(nomResp);
+            unEtablissement.setEtaPrenomresp(prenomResp);
+
+            //mise à jour de la valeur du bouton
+             if(unEtablissement.isEtaType() == true)
+             {
+                    btnType.setSelected(true);
+             }
+             else
+             {
+                    btnType2.setSelected(true);
+             }
+
+             //modification dans la base de données
+            Transaction tx = jfrMenu.getSession().beginTransaction();
+            jfrMenu.getSession().update(unEtablissement);
+            tx.commit();
+
+            JOptionPane.showMessageDialog(null, "Modification bien effectuée !", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Modification impossible", "Information", JOptionPane.ERROR_MESSAGE);
+        }
         
+        //recharger le tableau avec les données modifiées
         chargerTable();
     }//GEN-LAST:event_btnModifierActionPerformed
 
     private void btnSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupprimerActionPerformed
         // TODO add your handling code here:
-        String id = (String) txtID.getText();
-        String sReq = "From Etablissement Where ETA_ID =?";
+        int reply = JOptionPane.showConfirmDialog(null, "Voulez-vous supprimer cet établissement ?", "Attention", JOptionPane.YES_NO_OPTION);
         
-        Query q = jfrMenu.getSession().createQuery(sReq);
-        q.setParameter(0, id);
-        
-        Etablissement unEtablissement = (Etablissement) q.uniqueResult();
-        
-        Transaction tx = jfrMenu.getSession().beginTransaction();
+        if (reply == JOptionPane.YES_OPTION)
+        {
+            //récupération de l'ID de l'établissement selectionné
+            String id = (String) txtID.getText();
+            try{
+                String sReq = "From Etablissement Where ETA_ID =?";
+                Query q = jfrMenu.getSession().createQuery(sReq);
+                q.setParameter(0, id);
+                Etablissement unEtablissement = (Etablissement) q.uniqueResult();
+                
+                //suppression dans la base de données
+                Transaction tx = jfrMenu.getSession().beginTransaction();
+                jfrMenu.getSession().delete(unEtablissement);
+                tx.commit();
+                
+                JOptionPane.showMessageDialog(null, "Suppression bien effectuée !", "Information", JOptionPane.INFORMATION_MESSAGE);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Suppression impossible", "Information", JOptionPane.ERROR_MESSAGE);
+            }
 
-        jfrMenu.getSession().delete(unEtablissement);
+            //recharger le tableau après la suppression
+            chargerTable();
 
-        chargerTable();
-        
-        txtID.setText("");
-        txtNom.setText("");
-        txtAdresse.setText("");
-        txtCp.setText("");
-        txtVille.setText("");
-        txtTel.setText("");
-        txtMail.setText("");
-        txtCivilResp.setText("");
-        txtNomResp.setText("");
-        txtPrenomResp.setText("");
-        
-        tx.commit();
+            txtID.setText("");
+            txtNom.setText("");
+            txtAdresse.setText("");
+            txtCp.setText("");
+            txtVille.setText("");
+            txtTel.setText("");
+            txtMail.setText("");
+            txtCivilResp.setText("");
+            txtNomResp.setText("");
+            txtPrenomResp.setText("");
+        }
     }//GEN-LAST:event_btnSupprimerActionPerformed
+
+    private void btnTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTypeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TabEtab;
