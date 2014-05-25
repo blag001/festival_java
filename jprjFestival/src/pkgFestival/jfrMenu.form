@@ -63,6 +63,14 @@
             <Property name="text" type="java.lang.String" value="Offre h&#xe9;bergement"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cr&#xe9;er une offre"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmAfficherOffre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Afficher offres"/>

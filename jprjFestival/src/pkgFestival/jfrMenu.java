@@ -8,6 +8,7 @@ import pkgVues.jpAjoutTChambre;
 import org.hibernate.Session;
 import pkgEntite.HibernateUtil;
 import pkgVues.jpAjoutEtab;
+import pkgVues.jpAjoutOffre;
 import pkgVues.jpConsulterEtab;
 import pkgVues.jpConsulterOffre;
 import pkgVues.jpListeChambre;
@@ -23,6 +24,7 @@ public class jfrMenu extends javax.swing.JFrame {
     protected jpConsulterEtab jpConsulterEtab = new jpConsulterEtab();
     protected jpAjoutTChambre jfAjoutTChambre = new jpAjoutTChambre();
     protected jpConsulterOffre jpConsulterOffre = new jpConsulterOffre();
+    protected jpAjoutOffre jpAjoutOffre = new jpAjoutOffre();
     protected jpListeChambre jpListeChambre = new jpListeChambre();
 
     /**
@@ -58,6 +60,7 @@ public class jfrMenu extends javax.swing.JFrame {
         jmAjoutChambre = new javax.swing.JMenuItem();
         jmListeChambre = new javax.swing.JMenuItem();
         jmOffres = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jmAfficherOffre = new javax.swing.JMenuItem();
         jmAttribution = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -113,6 +116,14 @@ public class jfrMenu extends javax.swing.JFrame {
         jMenu.add(jmTChambre);
 
         jmOffres.setText("Offre hébergement");
+
+        jMenuItem1.setText("Créer une offre");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jmOffres.add(jMenuItem1);
 
         jmAfficherOffre.setText("Afficher offres");
         jmAfficherOffre.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +182,8 @@ public class jfrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jmAffichEtabActionPerformed
 
     private void jmAfficherOffreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAfficherOffreActionPerformed
-       this.setContentPane(jpConsulterOffre);
+        this.setContentPane(jpConsulterOffre);
+        pack();
     }//GEN-LAST:event_jmAfficherOffreActionPerformed
 
     private void jmListeChambreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListeChambreActionPerformed
@@ -179,6 +191,11 @@ public class jfrMenu extends javax.swing.JFrame {
         this.setContentPane(jpListeChambre);
         pack();
     }//GEN-LAST:event_jmListeChambreActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        this.setContentPane(jpAjoutOffre);
+        pack();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +226,7 @@ public class jfrMenu extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new jfrMenu().setVisible(true);
             }
@@ -216,6 +234,7 @@ public class jfrMenu extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenu;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmAccueil;
     private javax.swing.JMenuItem jmAffichEtab;
