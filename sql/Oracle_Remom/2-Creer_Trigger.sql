@@ -1,4 +1,5 @@
-	-- sur la table ATTRIBUTION
+-- sur la table ATTRIBUTION
+
 CREATE OR REPLACE TRIGGER Trg_Attribution
 BEFORE INSERT ON Attribution
 FOR EACH ROW
@@ -12,7 +13,9 @@ BEGIN
 	END IF;
 
 END;
-	-- sur la table Offre
+
+-- sur la table Offre
+
 CREATE OR REPLACE TRIGGER Trg_Offre
 BEFORE INSERT ON Offre
 FOR EACH ROW
