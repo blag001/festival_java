@@ -12,14 +12,14 @@ import org.hibernate.Transaction;
 import pkgEntite.HibernateUtil;
 import pkgEntite.Typechambre;
 import pkgFestival.jfrMenu;
-import pkgVues.jpListeChambre;
+import pkgVues.jpConsulterChambre;
 
 /**
  *
  * @author etudSIO
  */
 public class jpAjoutTChambre extends javax.swing.JPanel {
-protected jpListeChambre jpListeChambre = new jpListeChambre();
+protected jpConsulterChambre jpListeChambre = new jpConsulterChambre();
     /**
      * Creates new form jfAjoutTChambre
      */

@@ -11,7 +11,7 @@ import pkgVues.jpAjoutEtab;
 import pkgVues.jpAjoutOffre;
 import pkgVues.jpConsulterEtab;
 import pkgVues.jpConsulterOffre;
-import pkgVues.jpListeChambre;
+import pkgVues.jpConsulterChambre;
 
 
 /**
@@ -25,7 +25,7 @@ public class jfrMenu extends javax.swing.JFrame {
     protected jpAjoutTChambre jfAjoutTChambre = new jpAjoutTChambre();
     protected jpConsulterOffre jpConsulterOffre = new jpConsulterOffre();
     protected jpAjoutOffre jpAjoutOffre = new jpAjoutOffre();
-    protected jpListeChambre jpListeChambre = new jpListeChambre();
+    protected jpConsulterChambre jpListeChambre = new jpConsulterChambre();
 
     /**
      * Creates new form jfrMenu

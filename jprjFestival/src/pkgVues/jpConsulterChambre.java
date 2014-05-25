@@ -18,12 +18,12 @@ import pkgFestival.jfrMenu;
  *
  * @author etudSIO
  */
-public class jpListeChambre extends javax.swing.JPanel {
+public class jpConsulterChambre extends javax.swing.JPanel {
 
     /**
      * Creates new f0orm jpListeChambre
      */
-    public jpListeChambre() {
+    public jpConsulterChambre() {
         initComponents();
         chargerTable();
     }
