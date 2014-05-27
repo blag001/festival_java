@@ -13,7 +13,7 @@ BEGIN
 	END IF;
 
 END;
-
+/
 -- sur la table Offre
 
 CREATE OR REPLACE TRIGGER Trg_Offre
