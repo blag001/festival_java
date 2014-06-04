@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * fichier de declaration de la vue Create offre
  */
 
 package pkgVues;
@@ -18,7 +16,7 @@ import pkgEntite.Typechambre;
 import pkgFestival.jfrMenu;
 
 /**
- *
+ *  class de gestion de l'ajout (create) des offre
  * @author benoit
  */
 public class jpAjoutOffre extends javax.swing.JPanel {
@@ -181,7 +179,7 @@ public class jpAjoutOffre extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * si on clique sur valide l'ajout
+     * si on clique sur submit, on valide l'ajout
      * @param evt 
      */
     private void jbtSubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtSubmitMouseClicked

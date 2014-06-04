@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * fichier de declaration de la vue R/U/D offre
  */
 
 package pkgVues;
@@ -17,8 +15,8 @@ import pkgEntite.Offre;
 import pkgFestival.jfrMenu;
 
 /**
- *
- * @author etudsio
+ * class de gestion du R/U/D Offre
+ * @author benoit
  */
 public class jpConsulterOffre extends javax.swing.JPanel {
 
@@ -272,7 +270,7 @@ public class jpConsulterOffre extends javax.swing.JPanel {
     }//GEN-LAST:event_tabOffresMouseClicked
 
     /**
-     * si on demande un modification d'une offre
+     * si on demande la modification d'une offre
      * @param evt 
      */
     private void jbtSubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtSubmitMouseClicked
